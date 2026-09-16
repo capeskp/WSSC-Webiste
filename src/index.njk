@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ site.siteName }}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brandmark" style="display:flex; align-items:center; gap:10px;">
+      <img src="{{ site.crestNav }}" alt="{{ site.siteName }} crest" style="width:36px; height:36px; border-radius:50%;">
+      {{ site.siteName | upper }}
+    </a>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#whats-on">What's on</a>
+      <a href="#membership">Membership</a>
+      <a href="#price-list">Price list</a>
+      <a href="#blog">Blog</a>
+      <a href="#members-say">Members say</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#host-events">Host your event</a>
+      <a href="#notice-board">Notice board</a>
+      <a href="#find-us">Find us</a>
+      <a href="{{ site.facebookUrl }}" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:6px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94Z"/></svg>
+        Facebook
+      </a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <img class="rings" src="{{ site.crestHero }}" alt="{{ site.siteName }} crest" style="position:absolute; right:-40px; top:-40px; width:260px; height:260px; border-radius:50%; opacity:0.94; z-index:1;">
+  <div class="wrap">
+    <div class="status-chip"><span class="status-dot"></span>{{ site.openStatus }}</div>
+    <h1>{{ site.heroHeadlineLine1 }}<br>{{ site.heroHeadlineLine2 }}</h1>
+    <p class="lede">{{ site.heroLede }}</p>
+    <div class="hero-actions">
+      <a href="#membership" class="btn btn-brass">Become a member</a>
+      <a href="#find-us" class="btn btn-outline">Find us</a>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <p class="eyebrow">About the club</p>
+        <h2 class="section-title">{{ about.sectionTitle }}</h2>
+        {% for p in about.paragraphs %}<p>{{ p }}</p>{% endfor %}
+        <div class="featurette">
+          {% for f in about.features %}<span>{{ f }}</span>{% endfor %}
+        </div>
+      </div>
+      <svg class="dartboard" viewBox="0 0 200 200" role="img" aria-label="Laurel wreath crest illustration">
+        <ellipse cx="41.7" cy="86.8" rx="4.9" ry="10.5" fill="#C9A046" transform="rotate(290.0 41.7 86.8)"/>
+        <ellipse cx="50.0" cy="71.3" rx="6.2" ry="13.4" fill="#C9A046" transform="rotate(306.2 50.0 71.3)"/>
+        <ellipse cx="62.3" cy="58.8" rx="7.4" ry="15.8" fill="#C9A046" transform="rotate(322.5 62.3 58.8)"/>
+        <ellipse cx="77.5" cy="50.2" rx="8.1" ry="17.4" fill="#C9A046" transform="rotate(338.8 77.5 50.2)"/>
+        <ellipse cx="94.6" cy="46.2" rx="8.4" ry="18.0" fill="#C9A046" transform="rotate(355.0 94.6 46.2)"/>
+        <ellipse cx="112.1" cy="47.2" rx="8.1" ry="17.4" fill="#C9A046" transform="rotate(371.2 112.1 47.2)"/>
+        <ellipse cx="128.6" cy="53.0" rx="7.4" ry="15.8" fill="#C9A046" transform="rotate(387.5 128.6 53.0)"/>
+        <ellipse cx="142.9" cy="63.2" rx="6.2" ry="13.4" fill="#C9A046" transform="rotate(403.8 142.9 63.2)"/>
+        <ellipse cx="153.7" cy="77.0" rx="4.9" ry="10.5" fill="#C9A046" transform="rotate(420.0 153.7 77.0)"/>
+        <ellipse cx="158.3" cy="86.8" rx="4.9" ry="10.5" fill="#C9A046" transform="rotate(250.0 158.3 86.8)"/>
+        <ellipse cx="150.0" cy="71.3" rx="6.2" ry="13.4" fill="#C9A046" transform="rotate(233.8 150.0 71.3)"/>
+        <ellipse cx="137.7" cy="58.8" rx="7.4" ry="15.8" fill="#C9A046" transform="rotate(217.5 137.7 58.8)"/>
+        <ellipse cx="122.5" cy="50.2" rx="8.1" ry="17.4" fill="#C9A046" transform="rotate(201.2 122.5 50.2)"/>
+        <ellipse cx="105.4" cy="46.2" rx="8.4" ry="18.0" fill="#C9A046" transform="rotate(185.0 105.4 46.2)"/>
+        <ellipse cx="87.9" cy="47.2" rx="8.1" ry="17.4" fill="#C9A046" transform="rotate(168.8 87.9 47.2)"/>
+        <ellipse cx="71.4" cy="53.0" rx="7.4" ry="15.8" fill="#C9A046" transform="rotate(152.5 71.4 53.0)"/>
+        <ellipse cx="57.1" cy="63.2" rx="6.2" ry="13.4" fill="#C9A046" transform="rotate(136.2 57.1 63.2)"/>
+        <ellipse cx="46.3" cy="77.0" rx="4.9" ry="10.5" fill="#C9A046" transform="rotate(120.0 46.3 77.0)"/>
+        <polygon points="100.0,75.0 104.7,88.5 119.0,88.8 107.6,97.5 111.8,111.2 100.0,103.0 88.2,111.2 92.4,97.5 81.0,88.8 95.3,88.5" fill="#C9A046" stroke="#163A5C" stroke-width="1.5"/>
+        <text x="100" y="150" text-anchor="middle" font-family="Oswald, sans-serif" font-size="13" font-weight="600" letter-spacing="1.5" fill="#163A5C">EST. 1979</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<hr class="pin-rule">
+
+<section id="whats-on">
+  <div class="wrap">
+    <p class="eyebrow">What's on</p>
+    <h2 class="section-title">Coming up at the club</h2>
+
+    {% if whatsOn.regular.length %}
+    <p class="eyebrow" style="font-size:13px; margin-top:26px;">Regular events</p>
+    <div class="notice-list" style="margin-top:10px;">
+      {% for e in whatsOn.regular %}
+      <div class="notice">
+        <div class="notice-date" style="background:none; padding:0;">
+          <img src="{{ e.badge }}" alt="{{ e.title }} badge" onclick="openLightbox(this.src)" style="width:76px; height:76px; border-radius:50%; display:block; margin:0 auto 6px; border:2px solid var(--brass); cursor:zoom-in;">
+          <div class="mon" style="color:var(--brass-dark);">{{ e.dateLabel }}</div>
+        </div>
+        <div><h3>{{ e.title }}</h3><p>{{ e.description }}</p></div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if whatsOn.thisMonth.length %}
+    <p class="eyebrow" style="font-size:13px; margin-top:30px;">This month</p>
+    <div class="notice-list" style="margin-top:10px;">
+      {% for e in whatsOn.thisMonth %}
+      <div class="notice">
+        <div class="notice-date" style="background:none; padding:0;">
+          <img src="{{ e.badge }}" alt="{{ e.title }} badge" onclick="openLightbox(this.src)" style="width:76px; height:76px; border-radius:50%; display:block; margin:0 auto 6px; border:2px solid var(--brass); cursor:zoom-in;">
+          <div class="mon" style="color:var(--brass-dark);">{{ e.dateLabel }}</div>
+        </div>
+        <div><h3>{{ e.title }}</h3><p>{{ e.description }}</p></div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section id="membership" style="background:var(--paper-warm);">
+  <div class="wrap">
+    <p class="eyebrow">Membership</p>
+    <h2 class="section-title">Join the club</h2>
+    <div class="membership-board">
+      <div class="tally">
+        <div class="kind">Single membership</div>
+        <div class="price">{{ membership.single.price }}</div>
+        <div class="note">{{ membership.single.note }}</div>
+      </div>
+      <div class="tally">
+        <div class="kind">Family membership</div>
+        <div class="price">{{ membership.family.price }}</div>
+        <div class="note">{{ membership.family.note }}</div>
+      </div>
+    </div>
+    <div class="join-form">
+      <p class="eyebrow" style="margin-bottom:0;">Request a membership form</p>
+      <p style="font-size:14px; opacity:0.75; margin:6px 0 0;">Fill this in and a committee member will get your membership pack ready.</p>
+      <form name="membership-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="membership-enquiry">
+        <p style="display:none;"><label>Don't fill this in: <input name="bot-field"></label></p>
+        <label for="name">Full name</label>
+        <input id="name" name="name" type="text" required>
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" required>
+        <label for="type">Membership type</label>
+        <select id="type" name="type">
+          <option>Single — {{ membership.single.price }}/year</option>
+          <option>Family — {{ membership.family.price }}/year</option>
+        </select>
+        <button type="submit" class="btn btn-brass">Send request</button>
+      </form>
+      <p class="form-note">This form is wired for Netlify Forms — it'll work automatically once the site's deployed there, no extra backend needed.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="pin-rule">
+
+<section id="price-list">
+  <div class="wrap">
+    <p class="eyebrow">Price list</p>
+    <h2 class="section-title">What we're pouring</h2>
+    <div class="price-categories">
+      {% for cat in priceList.categories %}
+      <div class="price-category">
+        <h3>{{ cat.name }}</h3>
+        <ul class="price-rows{% if cat.twoColumn %} two-col{% endif %}">
+          {% for item in cat.items %}
+          <li>
+            <span class="price-name">
+              {% if item.logo %}<img class="price-logo" src="{{ item.logo }}" alt="{{ item.name }} logo">{% endif %}
+              {{ item.name }}{% if item.unit %}<span class="price-unit">{{ item.unit }}</span>{% endif %}
+            </span>
+            <span class="price-amt">{{ item.price }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<hr class="pin-rule">
+
+<section id="blog" style="background:var(--paper-warm);">
+  <div class="wrap">
+    <p class="eyebrow">Blog</p>
+    <h2 class="section-title">News from the clubhouse</h2>
+    <p style="font-size:15px; margin-top:14px;">{{ blog.intro }} <a href="{{ site.facebookUrl }}" target="_blank" rel="noopener" style="text-decoration:underline; font-weight:600;">Follow the club on Facebook</a> for day-to-day updates.</p>
+    <div style="margin-top:20px;" id="blogPosts">
+      {% for post in blog.posts %}
+      <details class="post"{% if post.open %} open{% endif %}>
+        <summary>
+          <div class="post-meta">{{ post.date }} · {{ post.tag }}</div>
+          <h3>{{ post.title }} <span class="chev">+</span></h3>
+          <p class="post-excerpt">{{ post.excerpt }}</p>
+        </summary>
+        <div class="post-body">
+          {% if post.badge %}<img class="post-badge" src="{{ post.badge }}" alt="{{ post.title }}" onclick="openLightbox(this.src)">{% endif %}
+          {{ post.body }}
+        </div>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<hr class="pin-rule">
+
+<section id="members-say">
+  <div class="wrap">
+    <p class="eyebrow">Members say</p>
+    <h2 class="section-title">What people say about the club</h2>
+    <div class="quotes" style="margin-top:22px;">
+      {% for q in testimonials.quotes %}
+      <div class="quote-card">
+        <div class="quote-mark">&ldquo;</div>
+        <p>{{ q.text }}</p>
+        <div class="quote-name">— {{ q.name }}</div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="testimonial-form">
+      <p class="eyebrow" style="margin-bottom:0;">Share your own</p>
+      <p style="font-size:14px; opacity:0.75; margin:6px 0 0;">Submissions go to the committee for a quick check before they're added — not published automatically, so there's no spam risk.</p>
+      <form name="testimonial-submission" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="margin-top:16px;">
+        <input type="hidden" name="form-name" value="testimonial-submission">
+        <p style="display:none;"><label>Don't fill this in: <input name="bot-field"></label></p>
+        <label for="t-name">Your name</label>
+        <input id="t-name" name="name" type="text" required>
+        <label for="t-quote">Your comment</label>
+        <input id="t-quote" name="quote" type="text" required>
+        <button type="submit" class="btn btn-brass">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<hr class="pin-rule">
+
+<section id="gallery" style="background:var(--paper-warm);">
+  <div class="wrap">
+    <p class="eyebrow">Gallery</p>
+    <h2 class="section-title">Life at the club</h2>
+    <div class="gallery">
+      {% for set in gallery.sets %}
+      <div class="snap" style="background-image:url('{{ set.thumbnail }}'); background-size:cover; background-position:center; cursor:zoom-in;" onclick="openGallerySet({{ loop.index0 }}, 0)"></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<hr class="pin-rule">
+
+<section id="host-events">
+  <div class="wrap">
+    <p class="eyebrow">Host your event at the Club house</p>
+    <h2 class="section-title">Host your event</h2>
+    <p style="margin-top:6px; color:var(--ink); opacity:.75;">{{ hostEvents.intro }}</p>
+
+    <div class="event-tabs" id="eventTabs">
+      <button class="event-tab" data-tab="babyShower" onclick="eventTab('babyShower', this)">Baby Shower</button>
+      <button class="event-tab" data-tab="genderReveal" onclick="eventTab('genderReveal', this)">Gender Reveal</button>
+      <button class="event-tab" data-tab="wedding" onclick="eventTab('wedding', this)">Wedding Reception</button>
+    </div>
+
+    <div class="event-panel" id="panel-babyShower">
+      <div class="mem-slideshow" id="memSlideshow-babyShower">
+        <div class="mem-frame">
+          <img class="mem-img" src="" alt="">
+          <button class="mem-nav mem-prev" aria-label="Previous photo" onclick="memMove(-1)">&#10094;</button>
+          <button class="mem-nav mem-next" aria-label="Next photo" onclick="memMove(1)">&#10095;</button>
+        </div>
+        <p class="mem-caption"></p>
+        <div class="mem-dots"></div>
+      </div>
+      <div class="event-empty" style="display:none;">
+        <h3 style="font-size:16px;">No photos yet</h3>
+        <p>Hosted a baby shower at the club? Send your photos over and we'll feature them here.</p>
+      </div>
+    </div>
+
+    <div class="event-panel" id="panel-genderReveal">
+      <div class="mem-slideshow" id="memSlideshow-genderReveal">
+        <div class="mem-frame">
+          <img class="mem-img" src="" alt="">
+          <button class="mem-nav mem-prev" aria-label="Previous photo" onclick="memMove(-1)">&#10094;</button>
+          <button class="mem-nav mem-next" aria-label="Next photo" onclick="memMove(1)">&#10095;</button>
+        </div>
+        <p class="mem-caption"></p>
+        <div class="mem-dots"></div>
+      </div>
+      <div class="event-empty" style="display:none;">
+        <h3 style="font-size:16px;">No photos yet</h3>
+        <p>Hosted a gender reveal at the club? Send your photos over and we'll feature them here.</p>
+      </div>
+    </div>
+
+    <div class="event-panel" id="panel-wedding">
+      <div class="mem-slideshow" id="memSlideshow-wedding">
+        <div class="mem-frame">
+          <img class="mem-img" src="" alt="">
+          <button class="mem-nav mem-prev" aria-label="Previous photo" onclick="memMove(-1)">&#10094;</button>
+          <button class="mem-nav mem-next" aria-label="Next photo" onclick="memMove(1)">&#10095;</button>
+        </div>
+        <p class="mem-caption"></p>
+        <div class="mem-dots"></div>
+      </div>
+      <div class="event-empty" style="display:none;">
+        <h3 style="font-size:16px;">No photos yet</h3>
+        <p>Hosted a wedding reception at the club? Send your photos over and we'll feature them here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="pin-rule">
+
+<section id="notice-board">
+  <div class="wrap">
+    <p class="eyebrow">Notice board</p>
+    <h2 class="section-title">News &amp; committee updates</h2>
+    <div class="board-grid">
+      {% for post in noticeBoard.posts %}
+      <div class="board-post">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.body }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="find-us" style="background:var(--felt); color:var(--chalk);">
+  <div class="wrap">
+    <p class="eyebrow" style="color:var(--brass);">Find us</p>
+    <h2 class="section-title" style="color:var(--chalk);">Pop in — we're opposite the Village Hall</h2>
+    <div class="find-grid">
+      <div>
+        <div class="contact-line"><strong>Address</strong><span>{{ contact.address }}</span></div>
+        <div class="contact-line"><strong>Phone</strong><span><a href="tel:{{ contact.phone | replace(' ', '') }}">{{ contact.phone }}</a></span></div>
+        <div class="contact-line"><strong>Email</strong><span><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></span></div>
+        <a href="https://www.google.com/maps/search/?api=1&query={{ site.siteName | urlencode }}" class="btn btn-outline" style="margin-top:20px;">Get directions</a>
+      </div>
+      <div>
+        <table class="hours-table">
+          {% for h in contact.hours %}
+          <tr><td>{{ h.days }}</td><td>{{ h.time }}</td></tr>
+          {% endfor %}
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>{{ site.footerCopyright }}</span>
+    <span><a href="{{ site.facebookUrl }}" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline;">Find us on Facebook</a> · {{ site.footerLocation }}</span>
+  </div>
+</footer>
+
+<div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox(event)">
+  <img id="lightboxImg" src="" alt="Enlarged photo">
+</div>
+<button class="lightbox-nav" id="lightboxPrev" onclick="event.stopPropagation(); galleryNav(-1)">&#8249;</button>
+<button class="lightbox-nav" id="lightboxNext" onclick="event.stopPropagation(); galleryNav(1)">&#8250;</button>
+<div class="lightbox-counter" id="lightboxCounter"></div>
+
+<script>
+  // ---------- Lightbox (single image + gallery sets) ----------
+  var gallerySets = {{ gallery.sets | dump | safe }};
+  var currentSetIndex = 0;
+  var currentPhotoIndex = 0;
+  var inGalleryMode = false;
+
+  function openLightbox(src){
+    inGalleryMode = false;
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightboxOverlay').classList.add('active');
+    document.getElementById('lightboxPrev').classList.remove('active');
+    document.getElementById('lightboxNext').classList.remove('active');
+    document.getElementById('lightboxCounter').classList.remove('active');
+  }
+
+  function openGallerySet(setIndex, photoIndex){
+    inGalleryMode = true;
+    currentSetIndex = setIndex;
+    currentPhotoIndex = photoIndex;
+    showGalleryImage();
+    document.getElementById('lightboxOverlay').classList.add('active');
+    var multi = gallerySets[setIndex].photos.length > 1;
+    document.getElementById('lightboxPrev').classList.toggle('active', multi);
+    document.getElementById('lightboxNext').classList.toggle('active', multi);
+    document.getElementById('lightboxCounter').classList.toggle('active', multi);
+  }
+
+  function showGalleryImage(){
+    var photos = gallerySets[currentSetIndex].photos;
+    document.getElementById('lightboxImg').src = photos[currentPhotoIndex];
+    document.getElementById('lightboxCounter').textContent = (currentPhotoIndex + 1) + ' of ' + photos.length;
+  }
+
+  function galleryNav(dir){
+    if (!inGalleryMode) return;
+    var photos = gallerySets[currentSetIndex].photos;
+    currentPhotoIndex = (currentPhotoIndex + dir + photos.length) % photos.length;
+    showGalleryImage();
+  }
+
+  function closeLightbox(e){
+    document.getElementById('lightboxOverlay').classList.remove('active');
+    document.getElementById('lightboxPrev').classList.remove('active');
+    document.getElementById('lightboxNext').classList.remove('active');
+    document.getElementById('lightboxCounter').classList.remove('active');
+  }
+
+  // ---------- Host Your Event tabs + per-tab slideshow ----------
+  var hostEventsData = {{ hostEvents | dump | safe }};
+  var tabLabels = { babyShower: 'Baby Shower', genderReveal: 'Gender Reveal', wedding: 'Wedding Reception' };
+  var slideState = {}; // per tab: { index, timer }
+
+  function setupSlideshow(tabKey){
+    var items = hostEventsData[tabKey] || [];
+    var panel = document.getElementById('panel-' + tabKey);
+    var slideshow = document.getElementById('memSlideshow-' + tabKey);
+    var empty = panel.querySelector('.event-empty');
+
+    if (items.length === 0) {
+      slideshow.style.display = 'none';
+      empty.style.display = 'block';
+      return;
+    }
+    slideshow.style.display = '';
+    empty.style.display = 'none';
+
+    var dotsWrap = slideshow.querySelector('.mem-dots');
+    dotsWrap.innerHTML = '';
+    items.forEach(function(item, i){
+      var d = document.createElement('button');
+      d.className = 'mem-dot';
+      d.setAttribute('aria-label', 'Go to photo ' + (i + 1));
+      d.onclick = function(){ memGo(tabKey, i); };
+      dotsWrap.appendChild(d);
+    });
+
+    slideState[tabKey] = { index: 0, timer: null };
+    renderSlide(tabKey);
+    resetSlideTimer(tabKey);
+
+    slideshow.onmouseenter = function(){
+      if (slideState[tabKey].timer) clearInterval(slideState[tabKey].timer);
+    };
+    slideshow.onmouseleave = function(){ resetSlideTimer(tabKey); };
+  }
+
+  function renderSlide(tabKey){
+    var items = hostEventsData[tabKey];
+    var state = slideState[tabKey];
+    var slideshow = document.getElementById('memSlideshow-' + tabKey);
+    var img = slideshow.querySelector('.mem-img');
+    var cap = slideshow.querySelector('.mem-caption');
+    img.src = items[state.index].src;
+    img.alt = items[state.index].caption;
+    cap.textContent = items[state.index].caption;
+    var dots = slideshow.querySelectorAll('.mem-dot');
+    dots.forEach(function(d, i){ d.classList.toggle('active', i === state.index); });
+  }
+
+  function resetSlideTimer(tabKey){
+    var state = slideState[tabKey];
+    if (state.timer) clearInterval(state.timer);
+    var items = hostEventsData[tabKey];
+    if (items.length < 2) return;
+    state.timer = setInterval(function(){
+      state.index = (state.index + 1) % items.length;
+      renderSlide(tabKey);
+    }, 5000);
+  }
+
+  window.memMove = function(delta){
+    var activeTab = document.querySelector('.event-tab.active').dataset.tab;
+    var state = slideState[activeTab];
+    var items = hostEventsData[activeTab];
+    state.index = (state.index + delta + items.length) % items.length;
+    renderSlide(activeTab);
+    resetSlideTimer(activeTab);
+  };
+
+  window.memGo = function(tabKey, i){
+    slideState[tabKey].index = i;
+    renderSlide(tabKey);
+    resetSlideTimer(tabKey);
+  };
+
+  function eventTab(tabKey, btn){
+    document.querySelectorAll('.event-tab').forEach(function(b){ b.classList.remove('active'); });
+    document.querySelectorAll('.event-panel').forEach(function(p){ p.classList.remove('active'); });
+    btn.classList.add('active');
+    document.getElementById('panel-' + tabKey).classList.add('active');
+  }
+
+  document.addEventListener('DOMContentLoaded', function(){
+    Object.keys(tabLabels).forEach(function(key){ setupSlideshow(key); });
+    // Activate the first tab that actually has photos, else the first tab
+    var firstWithPhotos = Object.keys(tabLabels).find(function(k){ return (hostEventsData[k] || []).length > 0; });
+    var activeKey = firstWithPhotos || 'babyShower';
+    var activeBtn = document.querySelector('.event-tab[data-tab="' + activeKey + '"]');
+    eventTab(activeKey, activeBtn);
+  });
+</script>
+
+</body>
+</html>

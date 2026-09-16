@@ -1,0 +1,23 @@
+{
+  "intro": "For day-to-day updates — cancellations, last-minute events, photos from the night before — follow the club on Facebook. This blog is for the bigger, standing news.",
+  "posts": [
+    {
+      "date": "2 April 2026",
+      "tag": "Social",
+      "title": "Easter Bingo Night",
+      "excerpt": "A full house for our Easter bingo night, with a table of raffle prizes up for grabs.",
+      "body": "Another great turnout for our Easter bingo night, with the room packed out and a strong table of raffle prizes on offer. See the photo in the gallery above.",
+      "badge": null,
+      "open": false
+    },
+    {
+      "date": "16 September 2026",
+      "tag": "Social",
+      "title": "Happy Hour — every Friday, 4 to 6pm",
+      "excerpt": "Good drinks, great company. New weekly Happy Hour starts this Friday.",
+      "body": "Dear members, just to let you all know that we're now running a Happy Hour from 4–6pm every Friday. Good drinks, great company — all welcome.",
+      "badge": "/assets/img/img-028-ca6b693ef1.jpg",
+      "open": true
+    }
+  ]
+}

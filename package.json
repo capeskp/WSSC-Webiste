@@ -1,0 +1,13 @@
+{
+  "name": "wssc-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Watlington Sports and Social Club website",
+  "scripts": {
+    "build": "eleventy",
+    "start": "eleventy --serve"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}

@@ -1,0 +1,230 @@
+backend:
+  name: git-gateway
+  branch: main
+
+local_backend: true
+
+media_folder: "src/assets/img"
+public_folder: "/assets/img"
+
+site_url: https://YOUR-NETLIFY-SITE.netlify.app
+display_url: https://YOUR-NETLIFY-SITE.netlify.app
+
+collections:
+  - name: "site"
+    label: "Site settings (nav, hero)"
+    files:
+      - name: "site"
+        label: "Site settings"
+        file: "src/_data/site.json"
+        fields:
+          - { label: "Site name", name: "siteName", widget: "string" }
+          - { label: "Crest (nav, small)", name: "crestNav", widget: "image" }
+          - { label: "Crest (hero corner)", name: "crestHero", widget: "image" }
+          - { label: "Facebook URL", name: "facebookUrl", widget: "string" }
+          - { label: "Open status text", name: "openStatus", widget: "string", hint: "e.g. Open today · 17:00–23:00" }
+          - { label: "Hero headline — line 1", name: "heroHeadlineLine1", widget: "string" }
+          - { label: "Hero headline — line 2", name: "heroHeadlineLine2", widget: "string" }
+          - { label: "Hero subtext", name: "heroLede", widget: "text" }
+          - { label: "Footer copyright line", name: "footerCopyright", widget: "string" }
+          - { label: "Footer location line", name: "footerLocation", widget: "string" }
+
+  - name: "about"
+    label: "About section"
+    files:
+      - name: "about"
+        label: "About the club"
+        file: "src/_data/about.json"
+        fields:
+          - { label: "Section heading", name: "sectionTitle", widget: "string" }
+          - label: "Paragraphs"
+            name: "paragraphs"
+            widget: "list"
+            field: { label: "Paragraph", name: "paragraph", widget: "text" }
+          - label: "Feature tags"
+            name: "features"
+            widget: "list"
+            field: { label: "Feature", name: "feature", widget: "string" }
+
+  - name: "whatsOn"
+    label: "What's On"
+    files:
+      - name: "whatsOn"
+        label: "What's On events"
+        file: "src/_data/whatsOn.json"
+        fields:
+          - label: "Regular events (weekly/monthly)"
+            name: "regular"
+            widget: "list"
+            fields:
+              - { label: "Badge photo", name: "badge", widget: "image" }
+              - { label: "Date label", name: "dateLabel", widget: "string", hint: "e.g. Every Wed" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+          - label: "This month (one-off events)"
+            name: "thisMonth"
+            widget: "list"
+            fields:
+              - { label: "Badge photo", name: "badge", widget: "image" }
+              - { label: "Date label", name: "dateLabel", widget: "string", hint: "e.g. 26 Sep" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+
+  - name: "membership"
+    label: "Membership pricing"
+    files:
+      - name: "membership"
+        label: "Membership pricing"
+        file: "src/_data/membership.json"
+        fields:
+          - label: "Single membership"
+            name: "single"
+            widget: "object"
+            fields:
+              - { label: "Price", name: "price", widget: "string" }
+              - { label: "Note", name: "note", widget: "string" }
+          - label: "Family membership"
+            name: "family"
+            widget: "object"
+            fields:
+              - { label: "Price", name: "price", widget: "string" }
+              - { label: "Note", name: "note", widget: "string" }
+
+  - name: "priceList"
+    label: "Price list"
+    files:
+      - name: "priceList"
+        label: "Bar price list"
+        file: "src/_data/priceList.json"
+        fields:
+          - label: "Categories"
+            name: "categories"
+            widget: "list"
+            fields:
+              - { label: "Category name", name: "name", widget: "string" }
+              - { label: "Two-column layout (for long lists like Spirits)", name: "twoColumn", widget: "boolean", default: false }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Unit (Pint / Bottle / Short etc.)", name: "unit", widget: "string", required: false }
+                  - { label: "Price", name: "price", widget: "string" }
+                  - { label: "Logo (optional)", name: "logo", widget: "image", required: false }
+
+  - name: "blog"
+    label: "Blog"
+    files:
+      - name: "blog"
+        label: "Blog posts"
+        file: "src/_data/blog.json"
+        fields:
+          - { label: "Intro text (above the posts)", name: "intro", widget: "text" }
+          - label: "Posts"
+            name: "posts"
+            widget: "list"
+            summary: "{{title}} — {{date}}"
+            fields:
+              - { label: "Date", name: "date", widget: "string", hint: "e.g. 16 September 2026" }
+              - { label: "Tag", name: "tag", widget: "string", default: "Social" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Excerpt (shown collapsed)", name: "excerpt", widget: "text" }
+              - { label: "Full body", name: "body", widget: "text" }
+              - { label: "Photo (optional)", name: "badge", widget: "image", required: false }
+              - { label: "Open by default on the page", name: "open", widget: "boolean", default: false }
+
+  - name: "testimonials"
+    label: "Members say"
+    files:
+      - name: "testimonials"
+        label: "Member testimonials"
+        file: "src/_data/testimonials.json"
+        fields:
+          - label: "Quotes"
+            name: "quotes"
+            widget: "list"
+            summary: "{{name}}"
+            fields:
+              - { label: "Quote text", name: "text", widget: "text" }
+              - { label: "Attributed to", name: "name", widget: "string" }
+
+  - name: "gallery"
+    label: "Gallery"
+    files:
+      - name: "gallery"
+        label: "Gallery photo sets"
+        file: "src/_data/gallery.json"
+        fields:
+          - label: "Sets (each becomes one clickable tile)"
+            name: "sets"
+            widget: "list"
+            summary: "{{name}}"
+            fields:
+              - { label: "Set name (internal, not shown on site)", name: "name", widget: "string" }
+              - { label: "Tile thumbnail", name: "thumbnail", widget: "image" }
+              - label: "Photos (shown in the lightbox for this tile)"
+                name: "photos"
+                widget: "list"
+                field: { label: "Photo", name: "photo", widget: "image" }
+
+  - name: "hostEvents"
+    label: "Host Your Event"
+    files:
+      - name: "hostEvents"
+        label: "Host Your Event section"
+        file: "src/_data/hostEvents.json"
+        fields:
+          - { label: "Intro text", name: "intro", widget: "text" }
+          - label: "Baby Shower photos"
+            name: "babyShower"
+            widget: "list"
+            summary: "{{caption}}"
+            fields:
+              - { label: "Photo", name: "src", widget: "image" }
+              - { label: "Caption", name: "caption", widget: "string" }
+          - label: "Gender Reveal photos"
+            name: "genderReveal"
+            widget: "list"
+            summary: "{{caption}}"
+            fields:
+              - { label: "Photo", name: "src", widget: "image" }
+              - { label: "Caption", name: "caption", widget: "string" }
+          - label: "Wedding Reception photos"
+            name: "wedding"
+            widget: "list"
+            summary: "{{caption}}"
+            fields:
+              - { label: "Photo", name: "src", widget: "image" }
+              - { label: "Caption", name: "caption", widget: "string" }
+
+  - name: "noticeBoard"
+    label: "Notice board"
+    files:
+      - name: "noticeBoard"
+        label: "Notice board posts"
+        file: "src/_data/noticeBoard.json"
+        fields:
+          - label: "Posts"
+            name: "posts"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Body", name: "body", widget: "text" }
+
+  - name: "contact"
+    label: "Find us (contact & hours)"
+    files:
+      - name: "contact"
+        label: "Contact details & opening hours"
+        file: "src/_data/contact.json"
+        fields:
+          - { label: "Address", name: "address", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - label: "Opening hours"
+            name: "hours"
+            widget: "list"
+            fields:
+              - { label: "Day(s)", name: "days", widget: "string" }
+              - { label: "Time", name: "time", widget: "string" }

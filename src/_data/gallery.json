@@ -1,0 +1,22 @@
+{
+  "sets": [
+    {
+      "name": "Bingo night",
+      "thumbnail": "/assets/img/img-029-f3504d053e.jpg",
+      "photos": [
+        "/assets/img/img-029-f3504d053e.jpg",
+        "/assets/img/img-041-0d25c97ba0.jpg",
+        "/assets/img/img-042-931975dd35.jpg",
+        "/assets/img/img-043-8e2180f6f8.jpg",
+        "/assets/img/img-044-720c18fd24.jpg"
+      ]
+    },
+    {
+      "name": "Clubhouse interior",
+      "thumbnail": "/assets/img/img-030-2c2264be2b.jpg",
+      "photos": [
+        "/assets/img/img-030-2c2264be2b.jpg"
+      ]
+    }
+  ]
+}

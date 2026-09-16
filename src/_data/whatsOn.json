@@ -1,0 +1,24 @@
+{
+  "regular": [
+    {
+      "badge": "/assets/img/img-003-fccb20e5d7.jpg",
+      "dateLabel": "Every Wed",
+      "title": "Over-60s coffee morning",
+      "description": "Weekly, 10am–1pm. Free coffee, tea and cake — all welcome."
+    },
+    {
+      "badge": "/assets/img/img-004-7531f1cb8a.jpg",
+      "dateLabel": "2nd Mon",
+      "title": "Jazz Night",
+      "description": "Second Monday of every month, from 7:30pm. Live music, members and guests welcome."
+    }
+  ],
+  "thisMonth": [
+    {
+      "badge": "/assets/img/img-005-0c215cde1a.jpg",
+      "dateLabel": "26 Sep",
+      "title": "The Stereotypes — live",
+      "description": "Sat 26th Sept, 8pm. Indie & Britpop tribute. Great music, good company, all welcome."
+    }
+  ]
+}

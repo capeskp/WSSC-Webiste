@@ -1,0 +1,4 @@
+{
+  "single": { "price": "£24", "note": "per year" },
+  "family": { "price": "£36", "note": "per year — covers couples living together and family members under 18" }
+}
