@@ -17,6 +17,15 @@
       "excerpt": "Good drinks, great company. New weekly Happy Hour starts this Friday.",
       "body": "Dear members, just to let you all know that we're now running a Happy Hour from 4–6pm every Friday. Good drinks, great company — all welcome.",
       "badge": "/assets/img/img-028-ca6b693ef1.jpg",
+      "open": false
+    },
+    {
+      "date": "16 September 2026",
+      "tag": "Notice",
+      "title": "New kitchen coming soon",
+      "excerpt": "The kitchen will soon be completed and food made available — watch this space for updates.",
+      "body": "The kitchen will soon be completed and food made available — watch this space for updates.",
+      "badge": null,
       "open": true
     }
   ]
