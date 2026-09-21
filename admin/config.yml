@@ -228,4 +228,4 @@ collections:
             fields:
               - { label: "Day(s)", name: "days", widget: "string" }
               - { label: "Time", name: "time", widget: "string" }
-              - { label: "Hours note (e.g. discretion notice)", name: "hoursNote", widget: "text", required: false }
+          - { label: "Hours note (e.g. discretion notice)", name: "hoursNote", widget: "text", required: false }
