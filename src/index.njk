@@ -337,6 +337,7 @@
           <tr><td>{{ h.days }}</td><td>{{ h.time }}</td></tr>
           {% endfor %}
         </table>
+        {% if contact.hoursNote %}<p class="hours-note" style="margin-top:10px; font-size:0.9em; color:var(--brass);">{{ contact.hoursNote }}</p>{% endif %}       
       </div>
     </div>
   </div>
