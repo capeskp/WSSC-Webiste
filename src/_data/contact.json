@@ -3,9 +3,21 @@
   "phone": "01553 810171",
   "email": "info@watlingtonsportsandsocialclub.co.uk",
   "hours": [
-    { "days": "Monday–Thursday", "time": "17:00–23:00" },
-    { "days": "Friday", "time": "16:00–01:00" },
-    { "days": "Saturday", "time": "12:00–01:00" },
-    { "days": "Sunday", "time": "12:00–Close" }
+    {
+      "days": "Monday–Thursday",
+      "time": "17:00–23:00"
+    },
+    {
+      "days": "Friday",
+      "time": "16:00–01:00"
+    },
+    {
+      "days": "Saturday",
+      "time": "12:00–01:00"
+    },
+    {
+      "days": "Sunday",
+      "time": "13:00–Close"
+    }
   ]
 }

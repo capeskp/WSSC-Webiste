@@ -1,12 +1,12 @@
 {
-  "siteName": "Watlington Sports & Social Club",
-  "crestNav": "/assets/img/crest-transparent.png",
-  "crestHero": "/assets/img/crest-transparent.png",
-  "facebookUrl": "https://www.facebook.com/watlingtonsportsandsocialclub/",
-  "openStatus": "Open today · 17:00–23:00",
-  "heroHeadlineLine1": "The Club Opposite",
-  "heroHeadlineLine2": "the Village Hall",
-  "heroLede": "Pool, darts, big-screen sport and a proper village welcome — Watlington Sports & Social Club, serving the village since 1979.",
+  "facebookUrl": "https://www.facebook.com/groups/33684217044",
   "footerCopyright": "© 2026 Watlington Sports and Social Club",
-  "footerLocation": "The Playing Fields, Church Road, Watlington"
+  "crestNav": "/assets/img/crest-transparent.png",
+  "heroHeadlineLine1": "The Club Opposite",
+  "footerLocation": "The Playing Fields, Church Road, Watlington",
+  "heroHeadlineLine2": "the Village Hall",
+  "crestHero": "/assets/img/crest-transparent.png",
+  "siteName": "Watlington Sports & Social Club",
+  "heroLede": "Pool, darts, big-screen sport and a proper village welcome — Watlington Sports & Social Club, serving the village since 1979.",
+  "openStatus": "Open today · 17:00–23:00"
 }
