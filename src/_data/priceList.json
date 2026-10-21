@@ -325,52 +325,30 @@
       "twoColumn": false,
       "items": [
         {
-          "name": "Hidden Road Pinot Grigio",
-          "price": "£3.30"
+          "name": "Small Wine",
+          "price": "£2.90",
+          "unit": "125ml"
         },
         {
-          "name": "Hidden Road White Zinfandel",
-          "price": "£3.30"
+          "name": "Large Wine",
+          "price": "£5.60",
+          "unit": "250ml"
         },
         {
-          "name": "I Heart Merlot",
-          "price": "£3.30"
+          "name": "Bottle",
+          "price": "£16.00"
         },
         {
-          "name": "I Heart Pinot Grigio",
-          "price": "£3.30"
-        },
-        {
-          "name": "I Heart Sauvignon",
-          "price": "£3.00"
-        },
-        {
-          "name": "JP Chenet Cabernet Syrah",
-          "price": "£4.00"
-        },
-        {
-          "name": "JP Chenet Colombard Chardonnay",
-          "price": "£4.00"
-        },
-        {
-          "name": "PORT",
-          "price": "£2.50"
+          "name": "Port",
+          "price": "£4.60"
         },
         {
           "name": "Prosecco",
-          "price": "£4.30"
+          "price": "£5.00"
         },
         {
-          "name": "Red",
-          "price": "£3.00"
-        },
-        {
-          "name": "Rose",
-          "price": "£3.00"
-        },
-        {
-          "name": "White",
-          "price": "£3.00"
+          "name": "PIMMs Jug",
+          "price": "£20.00"
         }
       ]
     }
