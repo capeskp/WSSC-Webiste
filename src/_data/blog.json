@@ -27,6 +27,15 @@
       "body": "The kitchen will soon be completed and food made available — watch this space for updates.",
       "badge": null,
       "open": true
+    },
+    {
+      "tag": "Update",
+      "open": false,
+      "date": "21 October 2026",
+      "title": "Kitchen Update",
+      "excerpt": "Work has started on the new Kitchen fit out ",
+      "body": "Work has started on the new Kitchen fit out ",
+      "badge": "/assets/img/litchen.png"
     }
   ]
 }
