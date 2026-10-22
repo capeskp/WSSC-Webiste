@@ -90,20 +90,12 @@
     </div>
     {% endif %}
 
-    {% if whatsOn.thisMonth.length %}
-    <p class="eyebrow" style="font-size:13px; margin-top:30px;">Upcoming events</p>
-    <div class="notice-list" style="margin-top:10px;">
-      {% for e in whatsOn.thisMonth %}
-      <div class="notice">
-        <div class="notice-date" style="background:none; padding:0;">
-          <img src="{{ e.badge }}" alt="{{ e.title }} badge" onclick="openLightbox(this.src)" style="width:76px; height:76px; border-radius:50%; display:block; margin:0 auto 6px; border:2px solid var(--brass); cursor:zoom-in;">
-          <div class="mon" style="color:var(--brass-dark);">{{ e.dateLabel }}</div>
-        </div>
-        <div><h3>{{ e.title }}</h3><p>{{ e.description }}</p></div>
-      </div>
-      {% endfor %}
+    <div class="upcoming-events" id="upcomingEvents" aria-live="polite">
+      <p class="eyebrow upcoming-heading">Upcoming events</p>
+      <div id="featuredEvent"></div>
+      <div id="moreEvents" class="event-card-grid"></div>
+      <p id="noUpcomingEvents" class="event-empty-message" hidden>No upcoming one-off events are currently listed. Please check back soon.</p>
     </div>
-    {% endif %}
   </div>
 </section>
 
@@ -501,6 +493,138 @@
     var activeBtn = document.querySelector('.event-tab[data-tab="' + activeKey + '"]');
     eventTab(activeKey, activeBtn);
   });
+</script>
+
+<script>
+// ---------- Upcoming events: UK time, chronological order and expiry ----------
+(function () {
+  const events = {{ whatsOn.thisMonth | dump | safe }};
+  const featured = document.getElementById('featuredEvent');
+  const more = document.getElementById('moreEvents');
+  const empty = document.getElementById('noUpcomingEvents');
+  if (!featured || !more || !empty) return;
+
+  function ukNow() {
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/London', year: 'numeric', month: '2-digit',
+      day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+    }).formatToParts(new Date());
+    const v = {};
+    parts.forEach(function (p) { v[p.type] = p.value; });
+    return { date: v.year + '-' + v.month + '-' + v.day,
+      minute: Number(v.hour) * 60 + Number(v.minute) };
+  }
+
+  function minutes(value) {
+    if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(value || '')) return null;
+    const bits = value.split(':');
+    return Number(bits[0]) * 60 + Number(bits[1]);
+  }
+
+  function nextDay(date) {
+    const d = new Date(date + 'T12:00:00Z');
+    d.setUTCDate(d.getUTCDate() + 1);
+    return d.toISOString().slice(0, 10);
+  }
+
+  function expiry(event) {
+    const end = minutes(event.endTime);
+    const start = minutes(event.startTime);
+    if (end !== null) {
+      // End times earlier than start times are treated as overnight events.
+      return { date: start !== null && end < start ? nextDay(event.eventDate) : event.eventDate,
+        minute: end };
+    }
+    // No advertised finish time: keep the event visible until 6am the next morning.
+    return { date: nextDay(event.eventDate), minute: 360 };
+  }
+
+  function isUpcoming(event, now) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(event.eventDate || '')) return true;
+    const until = expiry(event);
+    return until.date > now.date || (until.date === now.date && until.minute > now.minute);
+  }
+
+  function formatDate(event) {
+    if (!event.eventDate) return event.dateLabel || 'Date to be confirmed';
+    const parts = event.eventDate.split('-').map(Number);
+    const d = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2], 12));
+    return new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }).format(d);
+  }
+
+  function formatClock(time) {
+    const value = minutes(time);
+    if (value === null) return '';
+    const hour = Math.floor(value / 60);
+    const minute = value % 60;
+    return (hour % 12 || 12) + (minute ? ':' + String(minute).padStart(2, '0') : '') + (hour >= 12 ? 'pm' : 'am');
+  }
+
+  function timeLabel(event) {
+    const start = formatClock(event.startTime);
+    const end = formatClock(event.endTime);
+    if (start && end) return start + '–' + end;
+    if (start) return 'From ' + start;
+    if (end) return 'Until ' + end;
+    return 'Time to be confirmed';
+  }
+
+  function element(tag, className, content) {
+    const el = document.createElement(tag);
+    if (className) el.className = className;
+    if (content !== undefined) el.textContent = content;
+    return el;
+  }
+
+  function eventCard(event, large) {
+    const card = element('article', large ? 'featured-event' : 'event-card');
+    const imageButton = element('button', 'event-poster-button');
+    imageButton.type = 'button';
+    imageButton.setAttribute('aria-label', 'View full poster for ' + event.title);
+    const img = element('img', 'event-poster');
+    img.src = event.badge;
+    img.alt = event.title + ' event poster';
+    img.loading = 'lazy';
+    imageButton.appendChild(img);
+    imageButton.addEventListener('click', function () { openLightbox(event.badge); });
+    card.appendChild(imageButton);
+
+    const info = element('div', 'event-card-info');
+    if (large) info.appendChild(element('span', 'event-feature-label', 'NEXT UP AT THE CLUB'));
+    info.appendChild(element('p', 'event-card-date', formatDate(event)));
+    info.appendChild(element('h3', 'event-card-title', event.title));
+    info.appendChild(element('p', 'event-card-time', timeLabel(event)));
+    info.appendChild(element('p', 'event-card-description', event.description || ''));
+    const view = element('button', 'event-view-poster', 'View full poster');
+    view.type = 'button';
+    view.addEventListener('click', function () { openLightbox(event.badge); });
+    info.appendChild(view);
+    card.appendChild(info);
+    return card;
+  }
+
+  function renderUpcoming() {
+    const now = ukNow();
+    const upcoming = events.filter(function (e) { return isUpcoming(e, now); });
+    upcoming.sort(function (a, b) {
+      // Unscheduled events remain visible at the end until a date is entered in CMS.
+      return (a.eventDate || '9999-12-31').localeCompare(b.eventDate || '9999-12-31') ||
+        (a.startTime || '00:00').localeCompare(b.startTime || '00:00');
+    });
+    featured.replaceChildren();
+    more.replaceChildren();
+    empty.hidden = upcoming.length > 0;
+    if (!upcoming.length) return;
+    featured.appendChild(eventCard(upcoming[0], true));
+    upcoming.slice(1).forEach(function (event) { more.appendChild(eventCard(event, false)); });
+  }
+
+  renderUpcoming();
+  setInterval(renderUpcoming, 60000);
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) renderUpcoming();
+  });
+})();
 </script>
 
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
