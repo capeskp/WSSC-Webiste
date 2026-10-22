@@ -807,5 +807,47 @@
   });
 })();
 </script>
+<!-- Mobile Navigation Menu -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  const toggle = document.querySelector('.mobile-menu-toggle');
+  const menu = document.getElementById('main-nav-links');
+
+  if (!toggle || !menu) return;
+
+  function closeMenu() {
+    menu.classList.remove('menu-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open navigation menu');
+    toggle.querySelector('span').textContent = '☰';
+  }
+
+  toggle.addEventListener('click', function () {
+    const isOpen = menu.classList.toggle('menu-open');
+
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    toggle.setAttribute(
+      'aria-label',
+      isOpen ? 'Close navigation menu' : 'Open navigation menu'
+    );
+
+    toggle.querySelector('span').textContent = isOpen ? '✕' : '☰';
+  });
+
+  menu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') closeMenu();
+  });
+
+  window.addEventListener('resize', function () {
+    if (window.innerWidth > 720) closeMenu();
+  });
+
+});
+</script>
 </body>
 </html>
