@@ -902,7 +902,68 @@
           if you'd like a response.
         </p>
 
-        <p><em>Our online suggestion form is coming soon.</em></p>
+       <!-- Club Suggestion Form -->
+
+<form
+  name="club-suggestion"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  class="join-form"
+>
+
+  <input type="hidden"
+         name="form-name"
+         value="club-suggestion">
+
+  <p style="display:none;">
+    <label>
+      Don't fill this in:
+      <input name="bot-field">
+    </label>
+  </p>
+
+  <h4>Share Your Suggestion</h4>
+
+  <p>
+    Your name and email address are optional.
+    You can submit your suggestion anonymously.
+  </p>
+
+  <label for="suggestion-name">Your name (optional)</label>
+  <input
+    id="suggestion-name"
+    name="name"
+    type="text"
+  >
+
+  <label for="suggestion-email">Email address (optional)</label>
+  <input
+    id="suggestion-email"
+    name="email"
+    type="email"
+  >
+
+  <label for="suggestion-message">Your suggestion</label>
+  <textarea
+    id="suggestion-message"
+    name="suggestion"
+    rows="6"
+    required
+    placeholder="Tell us how we could improve the club..."
+  ></textarea>
+
+  <p class="form-note">
+    Suggestions will be reviewed by the club committee.
+    If you provide an email address, we may contact you
+    to discuss your suggestion.
+  </p>
+
+  <button type="submit" class="btn btn-brass">
+    Submit Suggestion
+  </button>
+
+</form>
 
       </div>
 
