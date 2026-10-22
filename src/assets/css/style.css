@@ -820,3 +820,200 @@
     transition: none;
   }
 }
+/* ==========================================
+   CLUB STANDARDS & FEEDBACK
+   ========================================== */
+
+/* Three-card layout */
+
+#club-standards .standards-category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* Category cards */
+
+#club-standards .standards-category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+
+  width: 100%;
+  min-height: 250px;
+  padding: 26px;
+
+  background: #fffaf0;
+  border: 1px solid #d8c69c;
+  border-top: 5px solid var(--brass);
+  border-radius: 8px;
+
+  text-align: left;
+  color: #10283e;
+  cursor: pointer;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#club-standards .standards-category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+}
+
+#club-standards .standards-category-card:focus-visible {
+  outline: 3px solid var(--brass-dark);
+  outline-offset: 4px;
+}
+
+/* Card icons */
+
+#club-standards .standards-category-icon {
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+/* Card headings */
+
+#club-standards .standards-category-card strong {
+  font-family: 'Oswald', sans-serif;
+  font-size: 23px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Card descriptions */
+
+#club-standards .standards-category-card > span:nth-of-type(2) {
+  font-family: 'Lora', serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #46515a;
+}
+
+/* Card action links */
+
+#club-standards .standards-category-action {
+  margin-top: auto;
+
+  font-family: 'Oswald', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+
+  color: #10283e;
+  border-bottom: 2px solid var(--brass);
+  padding-bottom: 4px;
+}
+
+/* Introduction */
+
+#club-standards .standards-intro {
+  max-width: 850px;
+  margin-top: 18px;
+  line-height: 1.7;
+}
+
+/* Selected content */
+
+#club-standards .standards-panel {
+  margin-top: 10px;
+  padding: 30px;
+
+  background: #fffaf0;
+  border: 1px solid #d8c69c;
+  border-left: 5px solid var(--brass);
+  border-radius: 8px;
+}
+
+#club-standards .standards-panel h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  color: #10283e;
+  margin-bottom: 20px;
+}
+
+#club-standards .standards-panel h4 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 20px;
+  color: #10283e;
+  margin: 24px 0 10px;
+}
+
+#club-standards .standards-panel p {
+  line-height: 1.8;
+  margin-bottom: 15px;
+}
+
+/* Back button */
+
+#club-standards .news-back-button {
+  display: inline-block;
+  margin: 26px 0 24px;
+  padding: 12px 20px;
+
+  background: #10283e;
+  color: #ffffff;
+
+  border: 1px solid #10283e;
+  border-radius: 5px;
+
+  font-family: 'Oswald', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#club-standards .news-back-button:hover {
+  background: #24445e;
+}
+
+#club-standards .news-back-button:focus-visible {
+  outline: 3px solid var(--brass-dark);
+  outline-offset: 3px;
+}
+
+/* Keep inactive panels hidden */
+
+#club-standards [hidden] {
+  display: none !important;
+}
+
+/* ==========================================
+   CLUB STANDARDS — RESPONSIVE LAYOUT
+   ========================================== */
+
+@media (max-width: 900px) {
+  #club-standards .standards-category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  #club-standards .standards-category-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #club-standards .standards-category-card {
+    min-height: 210px;
+    padding: 22px;
+  }
+
+  #club-standards .standards-panel {
+    padding: 20px;
+  }
+
+  #club-standards .standards-category-card strong {
+    font-size: 21px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #club-standards .standards-category-card,
+  #club-standards .news-back-button {
+    transition: none;
+  }
+}
