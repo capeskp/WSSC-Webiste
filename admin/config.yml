@@ -207,21 +207,6 @@ collections:
               - { label: "Photo", name: "src", widget: "image" }
               - { label: "Caption", name: "caption", widget: "string" }
 
-  - name: "noticeBoard"
-    label: "Notice board"
-    files:
-      - name: "noticeBoard"
-        label: "Notice board posts"
-        file: "src/_data/noticeBoard.json"
-        fields:
-          - label: "Posts"
-            name: "posts"
-            widget: "list"
-            summary: "{{title}}"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Body", name: "body", widget: "text" }
-
   - name: "contact"
     label: "Find us (contact & hours)"
     files:
