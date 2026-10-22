@@ -569,14 +569,36 @@
       (minute ? ':' + String(minute).padStart(2, '0') : '') +
       period;
   }
+  function setStatusColour(colour) {
+    const chip = statusElement.closest('.status-chip');
+    if (!chip) return;
 
-  function updateOpeningStatus() {
+    chip.style.backgroundColor =
+      colour === 'green' ? '#D5EBDD' :
+      colour === 'red' ? '#F5D5D5' :
+      '#E8C46A';
+
+    chip.style.color =
+      colour === 'green' ? '#155724' :
+      colour === 'red' ? '#842029' :
+      '#302400';
+
+    const dot = chip.querySelector('.status-dot');
+    if (dot) {
+      dot.style.backgroundColor =
+        colour === 'green' ? '#238636' :
+        colour === 'red' ? '#C62828' :
+        '#A66300';
+    }
+  }
+   function updateOpeningStatus() {
     const now = getUKTime();
     const today = getHours(now.day);
     const yesterday = getHours((now.day + 6) % 7);
 
     if (!today) {
       statusElement.textContent = 'See opening hours below';
+      setStatusColour('red');
       return;
     }
 
@@ -592,6 +614,7 @@
           now.minutes < previousClose) {
         statusElement.textContent =
           'Scheduled open until ' + formatTime(previousClose);
+        setStatusColour('green');
         return;
       }
     }
@@ -602,6 +625,7 @@
 
     if (opens === null) {
       statusElement.textContent = 'See opening hours below';
+      setStatusColour('red');
       return;
     }
 
@@ -611,16 +635,22 @@
         ? 'Scheduled to open at ' + formatTime(opens)
         : 'Sunday hours · Open from ' +
           formatTime(opens) + ', closing time varies';
+
+      setStatusColour('amber');
       return;
     }
 
     if (now.minutes < opens) {
       statusElement.textContent =
         'Scheduled to open at ' + formatTime(opens);
+      setStatusColour('amber');
+
     } else if (closes !== null &&
                (closes < opens || now.minutes < closes)) {
       statusElement.textContent =
         'Scheduled open until ' + formatTime(closes);
+      setStatusColour('green');
+
     } else {
       const tomorrow = getHours((now.day + 1) % 7);
       const nextOpen = tomorrow
@@ -630,6 +660,8 @@
       statusElement.textContent = nextOpen !== null
         ? 'Next scheduled opening tomorrow at ' + formatTime(nextOpen)
         : 'See scheduled opening hours below';
+
+      setStatusColour('red');
     }
   }
 
