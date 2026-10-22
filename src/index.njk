@@ -1480,5 +1480,64 @@ document.addEventListener('DOMContentLoaded', function () {
 
 })();
 </script>
+<!-- Club Standards & Feedback Navigation -->
+<script>
+(function () {
+  const categories = document.getElementById('standardsCategories');
+  const content = document.getElementById('standardsContent');
+  const backButton = document.getElementById('standardsBackButton');
+
+  if (!categories || !content || !backButton) return;
+
+  const cards = Array.from(
+    categories.querySelectorAll('.standards-category-card')
+  );
+
+  const panels = Array.from(
+    content.querySelectorAll('.standards-panel')
+  );
+
+  let lastSelectedCard = null;
+
+  cards.forEach(function (card) {
+    card.addEventListener('click', function () {
+      const selectedPanel = document.getElementById(
+        'standards-' + card.dataset.panel
+      );
+
+      if (!selectedPanel) return;
+
+      lastSelectedCard = card;
+
+      panels.forEach(function (panel) {
+        panel.hidden = panel !== selectedPanel;
+      });
+
+      categories.hidden = true;
+      content.hidden = false;
+
+      backButton.focus();
+    });
+  });
+
+  backButton.addEventListener('click', function () {
+    content.hidden = true;
+    categories.hidden = false;
+
+    panels.forEach(function (panel) {
+      panel.hidden = true;
+    });
+
+    if (lastSelectedCard) {
+      lastSelectedCard.focus();
+    }
+  });
+})();
+</script>
 </body>
 </html>
+/* Club Standards — hide inactive panels */
+
+#club-standards [hidden] {
+  display: none !important;
+}
