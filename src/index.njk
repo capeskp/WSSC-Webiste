@@ -39,8 +39,11 @@
 <header class="hero" id="top">
   <img class="rings" src="{{ site.crestHero }}" alt="{{ site.siteName }} crest">
   <div class="wrap">
-    <div class="status-chip"><span class="status-dot"></span>{{ site.openStatus }}</div>
-    <h1>{{ site.heroHeadlineLine1 }}<br>{{ site.heroHeadlineLine2 }}</h1>
+   <div class="status-chip" role="status" aria-live="polite">
+    <span class="status-dot"></span>
+    <span id="clubOpenStatus">Checking opening hours...</span>
+  </div>
+  <h1>{{ site.heroHeadlineLine1 }}<br>{{ site.heroHeadlineLine2 }}</h1>
     <p class="lede">{{ site.heroLede }}</p>
     <div class="hero-actions">
       <a href="#membership" class="btn btn-brass">Become a member</a>
@@ -512,6 +515,131 @@
     });
   }
 </script>
+<script>
+(function () {
+  const statusElement = document.getElementById('clubOpenStatus');
+  if (!statusElement) return;
 
+  // Opening hours are taken from the existing contact.json file.
+  const clubHours = {{ contact.hours | dump | safe }};
+
+  const dayNames = [
+    'Sunday', 'Monday', 'Tuesday', 'Wednesday',
+    'Thursday', 'Friday', 'Saturday'
+  ];
+
+  function getUKTime() {
+    const parts = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/London',
+      weekday: 'long',
+      hour: '2-digit',
+      minute: '2-digit',
+      hourCycle: 'h23'
+    }).formatToParts(new Date());
+
+    const values = {};
+    parts.forEach(function (part) {
+      values[part.type] = part.value;
+    });
+
+    return {
+      day: dayNames.indexOf(values.weekday),
+      minutes: Number(values.hour) * 60 + Number(values.minute)
+    };
+  }
+
+  function getHours(day) {
+    return clubHours.find(function (entry) {
+      return entry.days === dayNames[day] ||
+        (entry.days === 'Monday–Thursday' && day >= 1 && day <= 4);
+    });
+  }
+
+  function parseTime(value) {
+    const match = value && value.match(/^(\d{2}):(\d{2})$/);
+    return match ? Number(match[1]) * 60 + Number(match[2]) : null;
+  }
+
+  function formatTime(minutes) {
+    const hour = Math.floor(minutes / 60) % 24;
+    const minute = minutes % 60;
+    const period = hour >= 12 ? 'pm' : 'am';
+
+    return (hour % 12 || 12) +
+      (minute ? ':' + String(minute).padStart(2, '0') : '') +
+      period;
+  }
+
+  function updateOpeningStatus() {
+    const now = getUKTime();
+    const today = getHours(now.day);
+    const yesterday = getHours((now.day + 6) % 7);
+
+    if (!today) {
+      statusElement.textContent = 'See opening hours below';
+      return;
+    }
+
+    // Check whether yesterday's hours extend past midnight.
+    if (yesterday) {
+      const previousTimes = yesterday.time.split('–');
+      const previousOpen = parseTime(previousTimes[0]);
+      const previousClose = parseTime(previousTimes[1]);
+
+      if (previousOpen !== null &&
+          previousClose !== null &&
+          previousClose < previousOpen &&
+          now.minutes < previousClose) {
+        statusElement.textContent =
+          'Scheduled open until ' + formatTime(previousClose);
+        return;
+      }
+    }
+
+    const times = today.time.split('–');
+    const opens = parseTime(times[0]);
+    const closes = parseTime(times[1]);
+
+    if (opens === null) {
+      statusElement.textContent = 'See opening hours below';
+      return;
+    }
+
+    // Sunday has no fixed closing time.
+    if (now.day === 0) {
+      statusElement.textContent = now.minutes < opens
+        ? 'Scheduled to open at ' + formatTime(opens)
+        : 'Sunday hours · Open from ' +
+          formatTime(opens) + ', closing time varies';
+      return;
+    }
+
+    if (now.minutes < opens) {
+      statusElement.textContent =
+        'Scheduled to open at ' + formatTime(opens);
+    } else if (closes !== null &&
+               (closes < opens || now.minutes < closes)) {
+      statusElement.textContent =
+        'Scheduled open until ' + formatTime(closes);
+    } else {
+      const tomorrow = getHours((now.day + 1) % 7);
+      const nextOpen = tomorrow
+        ? parseTime(tomorrow.time.split('–')[0])
+        : null;
+
+      statusElement.textContent = nextOpen !== null
+        ? 'Next scheduled opening tomorrow at ' + formatTime(nextOpen)
+        : 'See scheduled opening hours below';
+    }
+  }
+
+  updateOpeningStatus();
+  setInterval(updateOpeningStatus, 60000);
+
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden) updateOpeningStatus();
+  });
+})();
+</script>
 </body>
 </html>
