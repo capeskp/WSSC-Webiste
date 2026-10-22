@@ -17,7 +17,18 @@
       <img src="{{ site.crestNav }}" alt="{{ site.siteName }} crest" style="width:36px; height:36px; border-radius:50%;">
       {{ site.siteName | upper }}
     </a>
-    <div class="navlinks">
+
+    <button
+      class="mobile-menu-toggle"
+      type="button"
+      aria-label="Open navigation menu"
+      aria-controls="main-nav-links"
+      aria-expanded="false"
+    >
+      <span aria-hidden="true">☰</span>
+    </button>
+
+    <div class="navlinks" id="main-nav-links">
       <a href="#about">About</a>
       <a href="#whats-on">What's on</a>
       <a href="#membership">Membership</a>
@@ -35,7 +46,6 @@
     </div>
   </div>
 </nav>
-
 <header class="hero" id="top">
   <img class="rings" src="{{ site.crestHero }}" alt="{{ site.siteName }} crest">
   <div class="wrap">
