@@ -1,12 +1,21 @@
 {
-  "intro": "For day-to-day updates — cancellations, last-minute events, photos from the night before — follow the club on Facebook. This blog is for the bigger, standing news.",
+ "intro": "Catch up on the latest club announcements, improvements and community news.",
   "posts": [
     {
-      "date": "2 April 2026",
-      "tag": "Social",
-      "title": "Easter Bingo Night",
-      "excerpt": "A full house for our Easter bingo night, with a table of raffle prizes up for grabs.",
-      "body": "Another great turnout for our Easter bingo night, with the room packed out and a strong table of raffle prizes on offer. See the photo in the gallery above.",
+      "tag": "Update",
+      "open": true,
+      "date": "21 October 2026",
+      "title": "Kitchen Update",
+      "excerpt": "New Kitchen ",
+      "body": "Work has started on the new Kitchen fit out - we hope to be open soon",
+      "badge": "/assets/img/litchen.png"
+    },
+    {
+      "date": "16 September 2026",
+      "tag": "Notice",
+      "title": "New kitchen coming soon",
+      "excerpt": "The kitchen will soon be completed and food made available — watch this space for updates.",
+      "body": "The kitchen will soon be completed and food made available — watch this space for updates.",
       "badge": null,
       "open": false
     },
@@ -20,22 +29,13 @@
       "open": false
     },
     {
-      "date": "16 September 2026",
-      "tag": "Notice",
-      "title": "New kitchen coming soon",
-      "excerpt": "The kitchen will soon be completed and food made available — watch this space for updates.",
-      "body": "The kitchen will soon be completed and food made available — watch this space for updates.",
+      "date": "2 April 2026",
+      "tag": "Social",
+      "title": "Easter Bingo Night",
+      "excerpt": "A full house for our Easter bingo night, with a table of raffle prizes up for grabs.",
+      "body": "Another great turnout for our Easter bingo night, with the room packed out and a strong table of raffle prizes on offer. See the photo in the gallery above.",
       "badge": null,
-      "open": true
-    },
-    {
-      "tag": "Update",
-      "open": false,
-      "date": "21 October 2026",
-      "title": "Kitchen Update",
-      "excerpt": "New Kitchen ",
-      "body": "Work has started on the new Kitchen fit out - we hope to be open soon",
-      "badge": "/assets/img/litchen.png"
+      "open": false
     }
   ]
 }
