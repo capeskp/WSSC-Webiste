@@ -562,3 +562,83 @@
     padding: 20px;
   }
 }
+/* ==========================================
+   CLUB NEWS — Article Cards
+   ========================================== */
+
+/* Individual news cards */
+#blog .post {
+  background: #fffaf0;
+  border: 1px solid #d8c69c;
+  border-left: 4px solid #c9a044;
+  border-radius: 6px;
+  padding: 22px 26px;
+  margin-bottom: 16px;
+}
+
+/* Ensure the first card has normal padding */
+#blog .post:first-of-type {
+  padding-top: 22px;
+}
+
+/* Highlight the newest article */
+#blog .post:first-child {
+  background: #fff8e8;
+  border-left: 5px solid var(--brass);
+}
+
+/* Article headings */
+#blog .post h3 {
+  color: #10283e;
+  margin: 0;
+}
+
+/* Article dates and categories */
+#blog .post-meta {
+  margin-bottom: 8px;
+}
+
+/* Improve article summaries */
+#blog .post-excerpt {
+  line-height: 1.6;
+}
+
+/* Improve expanded article spacing */
+#blog .post-body {
+  padding-top: 12px;
+  border-top: 1px solid #e4d8bd;
+  margin-top: 18px;
+  display: flow-root;
+}
+
+/* Expand/collapse indicator */
+#blog .post h3 .chev {
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 1;
+  color: var(--brass-dark);
+}
+
+#blog .post[open] h3 .chev {
+  font-size: 0;
+}
+
+#blog .post[open] h3 .chev::after {
+  content: "−";
+  font-size: 20px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 720px) {
+  #blog .post {
+    padding: 18px;
+  }
+
+  #blog .post:first-of-type {
+    padding-top: 18px;
+  }
+
+  #blog .post h3 {
+    font-size: 18px;
+  }
+}
