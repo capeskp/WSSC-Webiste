@@ -116,10 +116,10 @@ collections:
                   - { label: "Logo (optional)", name: "logo", widget: "image", required: false }
 
   - name: "blog"
-    label: "Blog"
+    label: "Club News"
     files:
       - name: "blog"
-        label: "Blog posts"
+        label: "Club News articles"
         file: "src/_data/blog.json"
         fields:
           - { label: "Intro text (above the posts)", name: "intro", widget: "text" }
@@ -129,7 +129,14 @@ collections:
             summary: "{{title}} — {{date}}"
             fields:
               - { label: "Date", name: "date", widget: "string", hint: "e.g. 16 September 2026" }
-              - { label: "Tag", name: "tag", widget: "string", default: "Social" }
+              - label: "Category"
+                name: "tag"
+                widget: "select"
+                options:
+                  - { label: "Important Updates", value: "Important Updates" }
+                  - { label: "Social & Events", value: "Social & Events" }
+                  - { label: "Club & Community", value: "Club & Community" }
+                default: "Social & Events"
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Excerpt (shown collapsed)", name: "excerpt", widget: "text" }
               - { label: "Full body", name: "body", widget: "text" }
