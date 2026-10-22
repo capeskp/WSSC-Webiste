@@ -1,5 +1,5 @@
 {
- "intro": "Catch up on the latest club announcements, improvements and community news.",
+  "intro": "Catch up on the latest club announcements, improvements and community news.",
   "posts": [
     {
       "tag": "Important Updates",
@@ -36,6 +36,14 @@
       "body": "Another great turnout for our Easter bingo night, with the room packed out and a strong table of raffle prizes on offer. See the photo in the gallery above.",
       "badge": null,
       "open": false
+    },
+    {
+      "tag": "Important Updates",
+      "open": false,
+      "date": "22 October 2026",
+      "title": "Membership Renewals",
+      "excerpt": "All memberships renew from 1 January.",
+      "body": "All memberships renew from 1 January. Ask a member of staff for a form to make sure your details are up to date."
     }
   ]
 }
