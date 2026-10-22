@@ -343,21 +343,83 @@
   <div class="wrap">
     <p class="eyebrow">Club News</p>
     <h2 class="section-title">Latest from the clubhouse</h2>
-    <p style="font-size:15px; margin-top:14px;">{{ blog.intro }} <a href="{{ site.facebookUrl }}" target="_blank" rel="noopener" style="text-decoration:underline; font-weight:600;">Follow the club on Facebook</a> for day-to-day updates.</p>
-    <div style="margin-top:20px;" id="blogPosts">
-      {% for post in blog.posts %}
-      <details class="post"{% if post.open %} open{% endif %}>
-        <summary>
-          <div class="post-meta">{{ post.date }} · {{ post.tag }}</div>
-          <h3>{{ post.title }} <span class="chev">+</span></h3>
-          <p class="post-excerpt">{{ post.excerpt }}</p>
-        </summary>
-        <div class="post-body">
-          {% if post.badge %}<img class="post-badge" src="{{ post.badge }}" alt="{{ post.title }}" onclick="openLightbox(this.src)">{% endif %}
-          {{ post.body }}
-        </div>
-      </details>
-      {% endfor %}
+
+    <p style="font-size:15px; margin-top:14px;">
+      {{ blog.intro }}
+      <a href="{{ site.facebookUrl }}" target="_blank"
+         rel="noopener" style="text-decoration:underline; font-weight:600;">
+        Follow the club on Facebook
+      </a>
+      for day-to-day updates.
+    </p>
+
+    <!-- Category selection -->
+    <div id="newsCategories" class="news-category-grid">
+
+      <button type="button" class="news-category-card"
+              data-category="Important Updates">
+        <span class="news-category-icon">📢</span>
+        <strong>Important Updates</strong>
+        <span>Club announcements, facilities and important notices.</span>
+        <span class="news-category-count"></span>
+        <span class="news-category-action">View updates →</span>
+      </button>
+
+      <button type="button" class="news-category-card"
+              data-category="Social &amp; Events">
+        <span class="news-category-icon">🎉</span>
+        <strong>Social &amp; Events</strong>
+        <span>Entertainment, activities and event reports.</span>
+        <span class="news-category-count"></span>
+        <span class="news-category-action">View events →</span>
+      </button>
+
+      <button type="button" class="news-category-card"
+              data-category="Club &amp; Community">
+        <span class="news-category-icon">🏡</span>
+        <strong>Club &amp; Community</strong>
+        <span>Fundraising, volunteering and community news.</span>
+        <span class="news-category-count"></span>
+        <span class="news-category-action">View community news →</span>
+      </button>
+
+    </div>
+
+    <!-- Selected category articles -->
+    <div id="newsCategoryView" hidden>
+      <button type="button" id="newsBackButton" class="news-back-button">
+        ← Back to Club News
+      </button>
+
+      <h3 id="newsCategoryTitle"></h3>
+
+      <div id="blogPosts">
+        {% for post in blog.posts %}
+        <details class="post"
+                 data-category="{{ post.tag }}"
+                 data-date="{{ post.date }}"
+                 {% if post.open %}open{% endif %}>
+          <summary>
+            <div class="post-meta">{{ post.date }} · {{ post.tag }}</div>
+            <h3>{{ post.title }} <span class="chev">+</span></h3>
+            <p class="post-excerpt">{{ post.excerpt }}</p>
+          </summary>
+          <div class="post-body">
+            {% if post.badge %}
+            <img class="post-badge"
+                 src="{{ post.badge }}"
+                 alt="{{ post.title }}"
+                 onclick="openLightbox(this.src)">
+            {% endif %}
+            {{ post.body }}
+          </div>
+        </details>
+        {% endfor %}
+      </div>
+
+      <p id="newsEmptyMessage" hidden>
+        There are no articles in this category yet. Please check back soon.
+      </p>
     </div>
   </div>
 </section>
@@ -1011,6 +1073,121 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 });
+</script>
+<!-- Club News Category Navigation -->
+<script>
+(function () {
+  const categories = document.getElementById('newsCategories');
+  const categoryView = document.getElementById('newsCategoryView');
+  const categoryTitle = document.getElementById('newsCategoryTitle');
+  const backButton = document.getElementById('newsBackButton');
+  const postsContainer = document.getElementById('blogPosts');
+  const emptyMessage = document.getElementById('newsEmptyMessage');
+
+  if (!categories || !categoryView || !categoryTitle ||
+      !backButton || !postsContainer || !emptyMessage) return;
+
+  const cards = Array.from(
+    categories.querySelectorAll('.news-category-card')
+  );
+
+  const posts = Array.from(
+    postsContainer.querySelectorAll('.post')
+  );
+
+  // Convert dates such as "21 October 2026" into sortable values.
+  const months = {
+    january: 0, february: 1, march: 2, april: 3,
+    may: 4, june: 5, july: 6, august: 7,
+    september: 8, october: 9, november: 10, december: 11
+  };
+
+  function dateValue(value) {
+    const match = (value || '').trim().match(
+      /^(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})$/
+    );
+
+    if (!match) return 0;
+
+    const month = months[match[2].toLowerCase()];
+    if (month === undefined) return 0;
+
+    return Date.UTC(
+      Number(match[3]),
+      month,
+      Number(match[1])
+    );
+  }
+
+  // Sort all articles newest first.
+  posts.sort(function (a, b) {
+    return dateValue(b.dataset.date) -
+           dateValue(a.dataset.date);
+  });
+
+  posts.forEach(function (post) {
+    postsContainer.appendChild(post);
+  });
+
+  // Display the number of articles in each category.
+  cards.forEach(function (card) {
+    const category = card.dataset.category;
+
+    const count = posts.filter(function (post) {
+      return post.dataset.category === category;
+    }).length;
+
+    const countElement = card.querySelector(
+      '.news-category-count'
+    );
+
+    if (countElement) {
+      countElement.textContent =
+        count + (count === 1 ? ' article' : ' articles');
+    }
+
+    card.addEventListener('click', function () {
+      openCategory(category);
+    });
+  });
+
+  function openCategory(category) {
+    let visibleCount = 0;
+
+    posts.forEach(function (post) {
+      const matches = post.dataset.category === category;
+
+      post.hidden = !matches;
+
+      if (matches) visibleCount++;
+    });
+
+    categoryTitle.textContent = category;
+
+    emptyMessage.hidden = visibleCount > 0;
+
+    categories.hidden = true;
+    categoryView.hidden = false;
+
+    backButton.focus();
+  }
+
+  backButton.addEventListener('click', function () {
+    categoryView.hidden = true;
+    categories.hidden = false;
+
+    posts.forEach(function (post) {
+      post.hidden = false;
+    });
+
+    categoryTitle.textContent = '';
+
+    // Return keyboard focus to the category selection.
+    const firstCard = cards[0];
+    if (firstCard) firstCard.focus();
+  });
+
+})();
 </script>
 </body>
 </html>
