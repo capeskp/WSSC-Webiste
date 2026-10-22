@@ -400,3 +400,47 @@
     text-align: left;
   }
 }
+/* ---------- Membership benefit cards ---------- */
+
+.membership-benefits {
+  margin: 30px 0 36px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.membership-benefits h3 {
+  grid-column: 1 / -1;
+  margin: 0 0 4px;
+  font-size: 22px;
+}
+
+.membership-benefits p {
+  background: #fffaf0;
+  border: 1px solid #d8c69c;
+  border-top: 4px solid #c9a044;
+  border-radius: 6px;
+  padding: 24px 20px;
+  margin: 0;
+  line-height: 1.7;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+.membership-benefits p strong {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: 17px;
+  color: #10283e;
+}
+
+/* Mobile layout */
+@media (max-width: 720px) {
+  .membership-benefits {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .membership-benefits p {
+    padding: 20px;
+  }
+}
