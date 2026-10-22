@@ -22,7 +22,6 @@ collections:
           - { label: "Crest (nav, small)", name: "crestNav", widget: "image" }
           - { label: "Crest (hero corner)", name: "crestHero", widget: "image" }
           - { label: "Facebook URL", name: "facebookUrl", widget: "string" }
-          - { label: "Open status text", name: "openStatus", widget: "string", hint: "e.g. Open today · 17:00–23:00" }
           - { label: "Hero headline — line 1", name: "heroHeadlineLine1", widget: "string" }
           - { label: "Hero headline — line 2", name: "heroHeadlineLine2", widget: "string" }
           - { label: "Hero subtext", name: "heroLede", widget: "text" }
@@ -61,13 +60,17 @@ collections:
               - { label: "Date label", name: "dateLabel", widget: "string", hint: "e.g. Every Wed" }
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
-          - label: "This month (one-off events)"
+          - label: "Upcoming events"
             name: "thisMonth"
             widget: "list"
+            summary: "{{title}} — {{eventDate}}"
             fields:
-              - { label: "Badge photo", name: "badge", widget: "image" }
-              - { label: "Date label", name: "dateLabel", widget: "string", hint: "e.g. 26 Sep" }
-              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Event poster", name: "badge", widget: "image" }
+              - { label: "Event title", name: "title", widget: "string" }
+              - { label: "Event date", name: "eventDate", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD", required: false, hint: "Select the date of the event" }
+              - { label: "Start time", name: "startTime", widget: "string", required: false, hint: "24-hour format, e.g. 19:30" }
+              - { label: "End time", name: "endTime", widget: "string", required: false, hint: "24-hour format, e.g. 21:00. Leave blank if unknown." }
+              - { label: "Date label (existing)", name: "dateLabel", widget: "string", hint: "e.g. 30 Oct" }
               - { label: "Description", name: "description", widget: "text" }
 
   - name: "membership"
