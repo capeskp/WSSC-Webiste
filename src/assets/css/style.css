@@ -1017,3 +1017,16 @@
     transition: none;
   }
 }
+/* Club Suggestion Form — Larger Message Box */
+
+#standards-suggestion textarea {
+  display: block;
+  width: 100%;
+  min-height: 180px;
+  box-sizing: border-box;
+  padding: 12px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 1.5;
+  resize: vertical;
+}
