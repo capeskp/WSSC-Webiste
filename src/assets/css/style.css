@@ -340,3 +340,36 @@
     color: var(--brass);
   }
 }
+/* ---------- Refined desktop navigation ---------- */
+
+@media (min-width: 721px) {
+
+  nav .wrap {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding-top: 14px;
+    padding-bottom: 12px;
+  }
+
+  nav .brandmark {
+    justify-content: center;
+    font-size: 19px;
+    letter-spacing: 0.04em;
+  }
+
+  nav .navlinks {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 8px;
+    font-size: 14px;
+  }
+
+  nav .navlinks a {
+    padding-bottom: 4px;
+  }
+}
