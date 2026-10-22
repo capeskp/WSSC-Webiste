@@ -529,3 +529,36 @@
     padding-left: 46px;
   }
 }
+/* ---------- Members' Bar Prices Notice ---------- */
+
+.members-price-notice {
+  background: #fffaf0;
+  border: 1px solid #d8c69c;
+  border-left: 4px solid #c9a044;
+  border-radius: 6px;
+  padding: 26px 30px;
+  margin: 28px 0 36px;
+}
+
+.members-price-notice h3 {
+  font-size: 22px;
+  color: #10283e;
+  margin: 0 0 14px;
+}
+
+.members-price-notice p {
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0 0 14px;
+}
+
+.members-price-notice .btn {
+  display: inline-block;
+  margin-top: 8px;
+}
+
+@media (max-width: 720px) {
+  .members-price-notice {
+    padding: 20px;
+  }
+}
