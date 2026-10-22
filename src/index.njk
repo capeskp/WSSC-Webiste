@@ -132,39 +132,150 @@
 
 <section id="membership" style="background:var(--paper-warm);">
   <div class="wrap">
+
     <p class="eyebrow">Membership</p>
-    <h2 class="section-title">Join the club</h2>
+    <h2 class="section-title">Join Your Village Club</h2>
+
+    <p>
+      Become part of Watlington Sports &amp; Social Club and
+      enjoy great benefits while supporting your local community.
+    </p>
+
+    <!-- Membership Benefits -->
+    <div class="membership-benefits">
+
+      <h3>Why become a member?</h3>
+
+      <p>
+        🍺 <strong>Discounted drinks</strong><br>
+        Members enjoy reduced prices at the bar.
+      </p>
+
+      <p>
+        🎉 <strong>Free event entry</strong><br>
+        Members enjoy free admission to non-ticketed events.
+      </p>
+
+      <p>
+        🤝 <strong>A welcoming community</strong><br>
+        Meet friends, enjoy club activities and support
+        your local village club.
+      </p>
+
+    </div>
+
+    <!-- Membership Prices -->
+    <h3>Membership Options</h3>
+
     <div class="membership-board">
+
       <div class="tally">
         <div class="kind">Single membership</div>
         <div class="price">{{ membership.single.price }}</div>
         <div class="note">{{ membership.single.note }}</div>
       </div>
+
       <div class="tally">
         <div class="kind">Family membership</div>
         <div class="price">{{ membership.family.price }}</div>
         <div class="note">{{ membership.family.note }}</div>
       </div>
+
     </div>
+
+    <p>
+      Membership is renewed annually. Fees are calculated
+      pro rata for new members joining partway through
+      the membership year.
+    </p>
+
+    <!-- Joining Instructions -->
+    <div class="membership-steps">
+
+      <h3>How to Join</h3>
+
+      <ol>
+        <li>Complete the membership enquiry form below.</li>
+        <li>A committee member will contact you with
+            an application form and joining instructions.</li>
+        <li>Your application will be submitted for
+            committee approval.</li>
+        <li>Once approved, pay your membership fee
+            at the club or by bank transfer.</li>
+      </ol>
+
+      <p>
+        Membership applications are subject to committee
+        approval, which is normally a formality.
+      </p>
+
+    </div>
+
+    <!-- Membership Enquiry Form -->
     <div class="join-form">
-      <p class="eyebrow" style="margin-bottom:0;">Request a membership form</p>
-      <p style="font-size:14px; opacity:0.75; margin:6px 0 0;">Fill this in and a committee member will get your membership pack ready.</p>
-      <form name="membership-enquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="membership-enquiry">
-        <p style="display:none;"><label>Don't fill this in: <input name="bot-field"></label></p>
+
+      <p class="eyebrow" style="margin-bottom:0;">
+        Request Membership Information
+      </p>
+
+      <p style="font-size:14px; opacity:0.75; margin:6px 0 0;">
+        Interested in joining? Complete the form below
+        and a committee member will contact you with
+        membership information and the next steps.
+      </p>
+
+      <form name="membership-enquiry"
+            method="POST"
+            data-netlify="true"
+            netlify-honeypot="bot-field">
+
+        <input type="hidden"
+               name="form-name"
+               value="membership-enquiry">
+
+        <p style="display:none;">
+          <label>
+            Don't fill this in:
+            <input name="bot-field">
+          </label>
+        </p>
+
         <label for="name">Full name</label>
-        <input id="name" name="name" type="text" required>
+        <input id="name"
+               name="name"
+               type="text"
+               required>
+
         <label for="email">Email address</label>
-        <input id="email" name="email" type="email" required>
+        <input id="email"
+               name="email"
+               type="email"
+               required>
+
         <label for="type">Membership type</label>
+
         <select id="type" name="type">
-          <option>Single — {{ membership.single.price }}/year</option>
-          <option>Family — {{ membership.family.price }}/year</option>
+          <option>
+            Single — {{ membership.single.price }}/year
+          </option>
+          <option>
+            Family — {{ membership.family.price }}/year
+          </option>
         </select>
-        <button type="submit" class="btn btn-brass">Send request</button>
+
+        <button type="submit" class="btn btn-brass">
+          Request Membership Information
+        </button>
+
       </form>
-      <p class="form-note">This form is wired for Netlify Forms — it'll work automatically once the site's deployed there, no extra backend needed.</p>
+
+      <p class="form-note">
+        Your details will be used to respond to your
+        membership enquiry.
+      </p>
+
     </div>
+
   </div>
 </section>
 
