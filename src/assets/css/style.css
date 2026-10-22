@@ -444,3 +444,88 @@
     padding: 20px;
   }
 }
+/* ---------- Membership heading and joining steps ---------- */
+
+/* Keep the membership heading on one line on desktop */
+@media (min-width: 721px) {
+  #membership .section-title {
+    max-width: none;
+    width: 100%;
+    white-space: nowrap;
+  }
+}
+
+/* How to Join panel */
+.membership-steps {
+  background: #fffaf0;
+  border: 1px solid #d8c69c;
+  border-left: 4px solid #c9a044;
+  border-radius: 6px;
+  padding: 28px 30px;
+  margin: 30px 0;
+}
+
+.membership-steps h3 {
+  font-size: 22px;
+  margin: 0 0 24px;
+  color: #10283e;
+}
+
+/* Numbered joining steps */
+.membership-steps ol {
+  list-style: none;
+  counter-reset: joining-step;
+  padding: 0;
+  margin: 0;
+}
+
+.membership-steps li {
+  counter-increment: joining-step;
+  position: relative;
+  padding: 4px 0 24px 52px;
+  margin-bottom: 12px;
+  line-height: 1.6;
+  min-height: 40px;
+}
+
+.membership-steps li::before {
+  content: counter(joining-step);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #c9a044;
+  color: #10283e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-family: 'Oswald', sans-serif;
+}
+
+/* Committee approval information */
+.membership-steps > p {
+  background: #f0e5c9;
+  border-radius: 4px;
+  padding: 14px 18px;
+  margin: 8px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Mobile adjustments */
+@media (max-width: 720px) {
+  #membership .section-title {
+    white-space: normal;
+  }
+
+  .membership-steps {
+    padding: 22px 18px;
+  }
+
+  .membership-steps li {
+    padding-left: 46px;
+  }
+}
