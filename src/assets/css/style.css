@@ -373,3 +373,30 @@
     padding-bottom: 4px;
   }
 }
+/* ---------- Homepage welcome section ---------- */
+
+.hero-location {
+  color: #d9b65d;
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 18px 0;
+}
+
+.hero-location strong {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.hero-welcome {
+  max-width: 550px;
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 18px 0 24px;
+}
+
+@media (max-width: 720px) {
+  .hero-location,
+  .hero-welcome {
+    text-align: left;
+  }
+}
