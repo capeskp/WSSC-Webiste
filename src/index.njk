@@ -926,23 +926,30 @@
   <h4>Share Your Suggestion</h4>
 
   <p>
-    Your name and email address are optional.
-    You can submit your suggestion anonymously.
-  </p>
+  Please provide your name and email address
+  when submitting a suggestion.
+  This helps us maintain a fair and constructive
+  feedback process and allows the committee
+  to contact you if further information is needed.
+</p>
 
-  <label for="suggestion-name">Your name (optional)</label>
-  <input
-    id="suggestion-name"
-    name="name"
-    type="text"
-  >
+  <label for="suggestion-name">Your name</label>
+<input
+  id="suggestion-name"
+  name="name"
+  type="text"
+  autocomplete="name"
+  required
+>
 
-  <label for="suggestion-email">Email address (optional)</label>
-  <input
-    id="suggestion-email"
-    name="email"
-    type="email"
-  >
+  <label for="suggestion-email">Email address</label>
+<input
+  id="suggestion-email"
+  name="email"
+  type="email"
+  autocomplete="email"
+  required
+>
 
   <label for="suggestion-message">Your suggestion</label>
   <textarea
