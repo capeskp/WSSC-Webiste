@@ -1047,7 +1047,22 @@
 <footer>
   <div class="wrap">
     <span>{{ site.footerCopyright }}</span>
-    <span><a href="{{ site.facebookUrl }}" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline;">Find us on Facebook</a> · {{ site.footerLocation }}</span>
+
+    <span>
+      <a href="{{ site.facebookUrl }}"
+         target="_blank"
+         rel="noopener"
+         style="color:inherit; text-decoration:underline;">
+        Find us on Facebook
+      </a>
+      · {{ site.footerLocation }}
+    </span>
+
+    <!-- Public Website Visitor Counter -->
+    <span class="website-counter">
+      Website Views:
+      <span id="websiteViewCount">Loading...</span>
+    </span>
   </div>
 </footer>
 
@@ -1720,6 +1735,23 @@ document.addEventListener('DOMContentLoaded', function () {
   data-goatcounter="https://watlingtonssc.goatcounter.com/count"
   async
   src="https://gc.zgo.at/count.js">
+</script>
+
+<!-- Public Website Visitor Counter -->
+<script>
+(function () {
+  var timer = setInterval(function () {
+    if (window.goatcounter && window.goatcounter.visit_count) {
+      clearInterval(timer);
+
+      window.goatcounter.visit_count({
+        append: '#websiteViewCount',
+        type: 'html',
+        no_branding: true
+      });
+    }
+  }, 100);
+})();
 </script>
 
 </body>
