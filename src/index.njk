@@ -1058,12 +1058,11 @@
       · {{ site.footerLocation }}
     </span>
 
-    <!-- Public Website Visitor Counter -->
-    <span class="website-counter">
-      Website Views:
-      <span id="websiteViewCount">Loading...</span>
-    </span>
-  </div>
+<!-- Public Website Visitor Counter -->
+<div class="website-counter">
+  <span class="website-counter-label">Website Views:</span>
+  <span id="websiteViewCount"></span>
+</div>
 </footer>
 
 <div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox(event)">
@@ -1747,7 +1746,27 @@ document.addEventListener('DOMContentLoaded', function () {
       window.goatcounter.visit_count({
         append: '#websiteViewCount',
         type: 'html',
-        no_branding: true
+        path: 'TOTAL',
+        no_branding: true,
+        style: `
+          div {
+            border: none;
+            background: transparent;
+            color: #c9a24d;
+            font-family: inherit;
+            font-size: 14px;
+            padding: 0;
+            margin: 0;
+          }
+          #gcvc-for, #gcvc-by {
+            display: none;
+          }
+          #gcvc-views {
+            color: #c9a24d;
+            font-size: 14px;
+            font-weight: bold;
+          }
+        `
       });
     }
   }, 100);
