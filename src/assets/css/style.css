@@ -65,8 +65,33 @@
   /* About */
   .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:48px; align-items:center;}
   .about-grid p{font-size:17px; line-height:1.75; margin:0 0 14px;}
-  .about-grid .featurette{display:flex; gap:12px; margin-top:20px; font-family:'Oswald',sans-serif; font-size:14px; font-weight:500;}
-  .about-grid .featurette span{background:var(--paper-warm); border:1px solid var(--wood); padding:6px 12px; border-radius:2px;}
+  /* About section — Club facilities */
+.about-grid .featurette {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-top: 24px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.about-grid .featurette span {
+  display: inline-flex;
+  align-items: center;
+  color: var(--ink);
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.about-grid .featurette span::before {
+  content: '◆';
+  color: var(--brass-dark);
+  font-size: 9px;
+  margin-right: 9px;
+}
   .dartboard{width:100%; max-width:280px; margin:0 auto; display:block;}
 
   /* Whats on */
