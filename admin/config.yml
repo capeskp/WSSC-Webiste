@@ -177,36 +177,40 @@ collections:
                 widget: "list"
                 field: { label: "Photo", name: "photo", widget: "image" }
 
-  - name: "hostEvents"
+    - name: "hostEvents"
     label: "Host Your Event"
     files:
       - name: "hostEvents"
         label: "Host Your Event section"
         file: "src/_data/hostEvents.json"
         fields:
-          - { label: "Intro text", name: "intro", widget: "text" }
-          - label: "Baby Shower photos"
-            name: "babyShower"
-            widget: "list"
-            summary: "{{caption}}"
-            fields:
-              - { label: "Photo", name: "src", widget: "image" }
-              - { label: "Caption", name: "caption", widget: "string" }
-          - label: "Gender Reveal photos"
-            name: "genderReveal"
-            widget: "list"
-            summary: "{{caption}}"
-            fields:
-              - { label: "Photo", name: "src", widget: "image" }
-              - { label: "Caption", name: "caption", widget: "string" }
-          - label: "Wedding Reception photos"
-            name: "wedding"
-            widget: "list"
-            summary: "{{caption}}"
-            fields:
-              - { label: "Photo", name: "src", widget: "image" }
-              - { label: "Caption", name: "caption", widget: "string" }
+          - label: "Intro text"
+            name: "intro"
+            widget: "text"
 
+          - label: "Event Types"
+            name: "events"
+            widget: "list"
+            summary: "{{fields.name}}"
+            fields:
+              - label: "Event Name"
+                name: "name"
+                widget: "string"
+
+              - label: "Photographs"
+                name: "photos"
+                widget: "list"
+                summary: "{{fields.caption}}"
+                fields:
+                  - label: "Photo"
+                    name: "src"
+                    widget: "image"
+
+                  - label: "Caption"
+                    name: "caption"
+                    widget: "string"
+                    required: false
+                    
   - name: "contact"
     label: "Find us (contact & hours)"
     files:
