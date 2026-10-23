@@ -86,12 +86,6 @@
   background: none;
 }
 
-.about-grid .featurette span::before {
-  content: '◆';
-  color: var(--brass-dark);
-  font-size: 9px;
-  margin-right: 9px;
-}
   .dartboard{width:100%; max-width:280px; margin:0 auto; display:block;}
 
   /* Whats on */
