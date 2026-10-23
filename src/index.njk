@@ -1169,15 +1169,21 @@
     document.getElementById('lightboxCounter').classList.remove('active');
   }
 
-  // ---------- Host Your Event tabs + per-tab slideshow ----------
-  var hostEventsData = {{ hostEvents | dump | safe }};
-  var tabLabels = { babyShower: 'Baby Shower', genderReveal: 'Gender Reveal', wedding: 'Wedding Reception' };
-  var slideState = {}; // per tab: { index, timer }
+   // ---------- Host Your Event: Dynamic Galleries ----------
 
-  function setupSlideshow(tabKey){
-    var items = hostEventsData[tabKey] || [];
+  var hostEventsData = {{ hostEvents.events | dump | safe }};
+  var slideState = {};
+
+  function setupSlideshow(tabKey) {
+    var event = hostEventsData[Number(tabKey)];
+    if (!event) return;
+
+    var items = event.photos || [];
     var panel = document.getElementById('panel-' + tabKey);
     var slideshow = document.getElementById('memSlideshow-' + tabKey);
+
+    if (!panel || !slideshow) return;
+
     var empty = panel.querySelector('.event-empty');
 
     if (items.length === 0) {
@@ -1185,82 +1191,153 @@
       empty.style.display = 'block';
       return;
     }
+
     slideshow.style.display = '';
     empty.style.display = 'none';
 
     var dotsWrap = slideshow.querySelector('.mem-dots');
     dotsWrap.innerHTML = '';
-    items.forEach(function(item, i){
-      var d = document.createElement('button');
-      d.className = 'mem-dot';
-      d.setAttribute('aria-label', 'Go to photo ' + (i + 1));
-      d.onclick = function(){ memGo(tabKey, i); };
-      dotsWrap.appendChild(d);
+
+    items.forEach(function(item, i) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'mem-dot';
+      dot.setAttribute('aria-label', 'Go to photo ' + (i + 1));
+
+      dot.onclick = function() {
+        memGo(tabKey, i);
+      };
+
+      dotsWrap.appendChild(dot);
     });
 
-    slideState[tabKey] = { index: 0, timer: null };
+    slideState[tabKey] = {
+      index: 0,
+      timer: null
+    };
+
     renderSlide(tabKey);
     resetSlideTimer(tabKey);
 
-    slideshow.onmouseenter = function(){
-      if (slideState[tabKey].timer) clearInterval(slideState[tabKey].timer);
+    slideshow.onmouseenter = function() {
+      if (slideState[tabKey].timer) {
+        clearInterval(slideState[tabKey].timer);
+      }
     };
-    slideshow.onmouseleave = function(){ resetSlideTimer(tabKey); };
+
+    slideshow.onmouseleave = function() {
+      resetSlideTimer(tabKey);
+    };
   }
 
-  function renderSlide(tabKey){
-    var items = hostEventsData[tabKey];
+  function renderSlide(tabKey) {
+    var event = hostEventsData[Number(tabKey)];
+    var items = event.photos || [];
     var state = slideState[tabKey];
+
+    if (!state || !items.length) return;
+
     var slideshow = document.getElementById('memSlideshow-' + tabKey);
     var img = slideshow.querySelector('.mem-img');
-    var cap = slideshow.querySelector('.mem-caption');
+    var caption = slideshow.querySelector('.mem-caption');
+
     img.src = items[state.index].src;
-    img.alt = items[state.index].caption;
-    cap.textContent = items[state.index].caption;
+    img.alt = items[state.index].caption || event.name;
+    caption.textContent = items[state.index].caption || '';
+
     var dots = slideshow.querySelectorAll('.mem-dot');
-    dots.forEach(function(d, i){ d.classList.toggle('active', i === state.index); });
+
+    dots.forEach(function(dot, i) {
+      dot.classList.toggle('active', i === state.index);
+    });
   }
 
-  function resetSlideTimer(tabKey){
+  function resetSlideTimer(tabKey) {
     var state = slideState[tabKey];
-    if (state.timer) clearInterval(state.timer);
-    var items = hostEventsData[tabKey];
+    if (!state) return;
+
+    if (state.timer) {
+      clearInterval(state.timer);
+    }
+
+    var event = hostEventsData[Number(tabKey)];
+    var items = event.photos || [];
+
     if (items.length < 2) return;
-    state.timer = setInterval(function(){
+
+    state.timer = setInterval(function() {
       state.index = (state.index + 1) % items.length;
       renderSlide(tabKey);
     }, 5000);
   }
 
-  window.memMove = function(delta){
-    var activeTab = document.querySelector('.event-tab.active').dataset.tab;
-    var state = slideState[activeTab];
-    var items = hostEventsData[activeTab];
-    state.index = (state.index + delta + items.length) % items.length;
-    renderSlide(activeTab);
-    resetSlideTimer(activeTab);
-  };
+  window.memMove = function(delta) {
+    var activeTab = document.querySelector('.event-tab.active');
+    if (!activeTab) return;
 
-  window.memGo = function(tabKey, i){
-    slideState[tabKey].index = i;
+    var tabKey = activeTab.dataset.tab;
+    var state = slideState[tabKey];
+
+    if (!state) return;
+
+    var items = hostEventsData[Number(tabKey)].photos || [];
+
+    if (!items.length) return;
+
+    state.index = (state.index + delta + items.length) % items.length;
+
     renderSlide(tabKey);
     resetSlideTimer(tabKey);
   };
 
-  function eventTab(tabKey, btn){
-    document.querySelectorAll('.event-tab').forEach(function(b){ b.classList.remove('active'); });
-    document.querySelectorAll('.event-panel').forEach(function(p){ p.classList.remove('active'); });
+  window.memGo = function(tabKey, index) {
+    if (!slideState[tabKey]) return;
+
+    slideState[tabKey].index = index;
+
+    renderSlide(tabKey);
+    resetSlideTimer(tabKey);
+  };
+
+  function eventTab(tabKey, btn) {
+    document.querySelectorAll('.event-tab').forEach(function(button) {
+      button.classList.remove('active');
+    });
+
+    document.querySelectorAll('.event-panel').forEach(function(panel) {
+      panel.classList.remove('active');
+    });
+
     btn.classList.add('active');
-    document.getElementById('panel-' + tabKey).classList.add('active');
+
+    var panel = document.getElementById('panel-' + tabKey);
+
+    if (panel) {
+      panel.classList.add('active');
+    }
   }
 
-  document.addEventListener('DOMContentLoaded', function(){
-    Object.keys(tabLabels).forEach(function(key){ setupSlideshow(key); });
-    // Activate the first tab that actually has photos, else the first tab
-    var firstWithPhotos = Object.keys(tabLabels).find(function(k){ return (hostEventsData[k] || []).length > 0; });
-    var activeKey = firstWithPhotos || 'babyShower';
-    var activeBtn = document.querySelector('.event-tab[data-tab="' + activeKey + '"]');
-    eventTab(activeKey, activeBtn);
+  document.addEventListener('DOMContentLoaded', function() {
+
+    hostEventsData.forEach(function(event, index) {
+      setupSlideshow(String(index));
+    });
+
+    if (!hostEventsData.length) return;
+
+    var firstWithPhotos = hostEventsData.findIndex(function(event) {
+      return event.photos && event.photos.length > 0;
+    });
+
+    var activeIndex = firstWithPhotos >= 0 ? firstWithPhotos : 0;
+
+    var activeBtn = document.querySelector(
+      '.event-tab[data-tab="' + activeIndex + '"]'
+    );
+
+    if (activeBtn) {
+      eventTab(String(activeIndex), activeBtn);
+    }
   });
 </script>
 
