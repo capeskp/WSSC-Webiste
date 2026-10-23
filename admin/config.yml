@@ -7,8 +7,8 @@ local_backend: true
 media_folder: "src/assets/img"
 public_folder: "/assets/img"
 
-site_url: https://wssc-website.netlify.app
-display_url: https://wssc-website.netlify.app
+site_url: https://watlingtonsportsandsocialclub.co.uk
+display_url: https://watlingtonsportsandsocialclub.co.uk
 
 collections:
   - name: "site"
