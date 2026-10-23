@@ -177,7 +177,7 @@ collections:
                 widget: "list"
                 field: { label: "Photo", name: "photo", widget: "image" }
 
-    - name: "hostEvents"
+  - name: "hostEvents"
     label: "Host Your Event"
     files:
       - name: "hostEvents"
