@@ -977,45 +977,112 @@
 
       <!-- Complaints -->
 
-      <div id="standards-complaint"
-           class="standards-panel"
-           hidden>
+<div id="standards-complaint"
+     class="standards-panel"
+     hidden>
 
-        <h3>Raise a Complaint</h3>
+  <h3>Raise a Complaint</h3>
 
-        <p>
-          Watlington Sports &amp; Social Club takes
-          all complaints seriously.
-        </p>
+  <p>
+    Watlington Sports &amp; Social Club takes
+    all complaints seriously.
+  </p>
 
-        <p>
-          Formal complaints will be handled in the
-          strictest confidence, subject to disclosures
-          necessary for a fair investigation,
-          safeguarding or legal obligations.
-        </p>
+  <p>
+    Formal complaints will be handled confidentially,
+    subject to information sharing necessary for a
+    fair investigation, safeguarding or legal obligations.
+  </p>
 
-        <p>
-          Complaints will be reviewed by authorised
-          committee officers who are not personally
-          involved in the matter.
-        </p>
+  <p>
+    Complaints will be reviewed by authorised
+    committee officers who are not personally
+    involved in the matter.
+  </p>
 
-        <p>
-          Formal complaints will require your name
-          and contact email address.
-        </p>
+  <form name="club-complaint"
+        method="POST"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="join-form">
 
-        <p>
-          <em>
-            Our confidential complaints service
-            is currently being prepared.
-          </em>
-        </p>
+    <input type="hidden"
+           name="form-name"
+           value="club-complaint">
 
-      </div>
+    <p style="display:none;">
+      <label>
+        Don't fill this in:
+        <input name="bot-field">
+      </label>
+    </p>
 
-    </div>
+    <h4>Submit a Formal Complaint</h4>
+
+    <p>
+      Please provide your name, email address
+      and details of your complaint.
+      This information will help the committee
+      investigate and respond appropriately.
+    </p>
+
+    <label for="complaint-name">
+      Your name
+    </label>
+
+    <input id="complaint-name"
+           name="name"
+           type="text"
+           autocomplete="name"
+           required>
+
+    <label for="complaint-email">
+      Email address
+    </label>
+
+    <input id="complaint-email"
+           name="email"
+           type="email"
+           autocomplete="email"
+           required>
+
+    <label for="complaint-subject">
+      Subject of complaint
+    </label>
+
+    <input id="complaint-subject"
+           name="subject"
+           type="text"
+           required>
+
+    <label for="complaint-details">
+      Details of your complaint
+    </label>
+
+    <textarea id="complaint-details"
+              name="complaint"
+              rows="6"
+              required
+              placeholder="Please explain your complaint, including relevant dates, circumstances and any actions already taken..."></textarea>
+
+    <p class="form-note">
+      Your complaint will be received by the club
+      and reviewed by authorised committee officers.
+      Information will only be shared where necessary
+      to investigate the complaint or meet legal
+      and safeguarding obligations.
+    </p>
+
+    <button type="submit"
+            class="btn btn-brass">
+      Submit Formal Complaint
+    </button>
+
+  </form>
+
+</div>
+
+</div>
 
   </div>
 </section>
