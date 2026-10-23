@@ -1017,9 +1017,10 @@
     transition: none;
   }
 }
-/* Club Suggestion Form — Larger Message Box */
+/* Club Feedback Forms — Larger Message Boxes */
 
-#standards-suggestion textarea {
+#standards-suggestion textarea,
+#standards-complaint textarea {
   display: block;
   width: 100%;
   min-height: 180px;
