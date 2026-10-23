@@ -1,89 +1,100 @@
 {
   "intro": "Function room available to hire — here's a peek at past events held at the club.",
-  "babyShower": [
+  "events": [
     {
-      "src": "/assets/img/img-031-bcdc75f703.jpg",
-      "caption": "Function room set up for a private party"
+      "name": "Baby Shower",
+      "photos": [
+        {
+          "src": "/assets/img/img-031-bcdc75f703.jpg",
+          "caption": "Function room set up for a private party"
+        },
+        {
+          "src": "/assets/img/img-032-60e9febda6.jpg",
+          "caption": "Party catering laid out for guests"
+        },
+        {
+          "src": "/assets/img/img-033-499717d898.jpg",
+          "caption": "Cupcakes and cookies on tiered stands"
+        },
+        {
+          "src": "/assets/img/img-034-5c17d58605.jpg",
+          "caption": "Custom-decorated cookies for the occasion"
+        },
+        {
+          "src": "/assets/img/img-035-f112bd7d23.jpg",
+          "caption": "A sweet treats table for the little ones"
+        },
+        {
+          "src": "/assets/img/img-036-036274e49c.jpg",
+          "caption": "Decorations set up for the day"
+        },
+        {
+          "src": "/assets/img/img-037-092e941bbc.jpg",
+          "caption": "Party favours ready for guests to take home"
+        },
+        {
+          "src": "/assets/img/img-038-265cf479ae.jpg",
+          "caption": "A guestbook table for well-wishes"
+        },
+        {
+          "src": "/assets/img/img-039-adf58b0d09.jpg",
+          "caption": "Jungle-themed balloon arch and dessert table"
+        },
+        {
+          "src": "/assets/img/img-040-8acad33878.jpg",
+          "caption": "Green and white balloon garland backdrop"
+        }
+      ]
     },
     {
-      "src": "/assets/img/img-032-60e9febda6.jpg",
-      "caption": "Party catering laid out for guests"
+      "name": "Gender Reveal",
+      "photos": [
+        {
+          "src": "/assets/img/PHOTO-2026-09-17-20-46-32.jpg",
+          "caption": "Sewtup for a Gender Reveal"
+        },
+        {
+          "src": "/assets/img/WhatsApp Image 2026-09-17 at 20.46.54 (1).jpeg",
+          "caption": "Set up for the reveal"
+        },
+        {
+          "src": "/assets/img/WhatsApp Image 2026-09-17 at 20.46.54 (2).jpeg",
+          "caption": "Set up for the reveal"
+        },
+        {
+          "src": "/assets/img/whatsapp-image-2026-09-17-at-20.46.32.jpeg",
+          "caption": "Set up for the reveal"
+        }
+      ]
     },
     {
-      "src": "/assets/img/img-033-499717d898.jpg",
-      "caption": "Cupcakes and cookies on tiered stands"
-    },
-    {
-      "src": "/assets/img/img-034-5c17d58605.jpg",
-      "caption": "Custom-decorated cookies for the occasion"
-    },
-    {
-      "src": "/assets/img/img-035-f112bd7d23.jpg",
-      "caption": "A sweet treats table for the little ones"
-    },
-    {
-      "src": "/assets/img/img-036-036274e49c.jpg",
-      "caption": "Decorations set up for the day"
-    },
-    {
-      "src": "/assets/img/img-037-092e941bbc.jpg",
-      "caption": "Party favours ready for guests to take home"
-    },
-    {
-      "src": "/assets/img/img-038-265cf479ae.jpg",
-      "caption": "A guestbook table for well-wishes"
-    },
-    {
-      "src": "/assets/img/img-039-adf58b0d09.jpg",
-      "caption": "Jungle-themed balloon arch and dessert table"
-    },
-    {
-      "src": "/assets/img/img-040-8acad33878.jpg",
-      "caption": "Green and white balloon garland backdrop"
-    }
-  ],
-  "genderReveal": [
-    {
-      "src": "/assets/img/PHOTO-2026-09-17-20-46-32.jpg",
-      "caption": "Sewtup for a Gender Reveal"
-    },
-    {
-      "src": "/assets/img/WhatsApp Image 2026-09-17 at 20.46.54 (1).jpeg",
-      "caption": "Set up for the reveal"
-    },
-    {
-      "src": "/assets/img/WhatsApp Image 2026-09-17 at 20.46.54 (2).jpeg",
-      "caption": "Set up for the reveal"
-    },
-    {
-      "src": "/assets/img/whatsapp-image-2026-09-17-at-20.46.32.jpeg",
-      "caption": "Set up for the reveal"
-    }
-  ],
-  "wedding": [
-    {
-      "src": "/assets/img/WhatsApp Image 2026-09-16 at 21.03.08 (4).jpeg",
-      "caption": "Wedding Reception"
-    },
-    {
-      "caption": "Wedding Reception",
-      "src": "/assets/img/WhatsApp Image 2026-09-16 at 21.03.08 (5).jpeg"
-    },
-    {
-      "src": "/assets/img/WhatsApp Image 2026-09-16 at 21.03.08 (6).jpeg",
-      "caption": "Wedding Reception"
-    },
-    {
-      "src": "/assets/img/WhatsApp Image 2026-09-16 at 21.03.09 (4).jpeg",
-      "caption": "Wedding Reception"
-    },
-    {
-      "src": "/assets/img/WhatsApp Image 2026-09-16 at 21.03.09 (5).jpeg",
-      "caption": "Wedding Reception"
-    },
-    {
-      "src": "/assets/img/WhatsApp Image 2026-09-16 at 21.03.09 (6).jpeg",
-      "caption": "Wedding Reception"
+      "name": "Wedding Reception",
+      "photos": [
+        {
+          "src": "/assets/img/WhatsApp Image 2026-09-16 at 21.03.08 (4).jpeg",
+          "caption": "Wedding Reception"
+        },
+        {
+          "src": "/assets/img/WhatsApp Image 2026-09-16 at 21.03.08 (5).jpeg",
+          "caption": "Wedding Reception"
+        },
+        {
+          "src": "/assets/img/WhatsApp Image 2026-09-16 at 21.03.08 (6).jpeg",
+          "caption": "Wedding Reception"
+        },
+        {
+          "src": "/assets/img/WhatsApp Image 2026-09-16 at 21.03.09 (4).jpeg",
+          "caption": "Wedding Reception"
+        },
+        {
+          "src": "/assets/img/WhatsApp Image 2026-09-16 at 21.03.09 (5).jpeg",
+          "caption": "Wedding Reception"
+        },
+        {
+          "src": "/assets/img/WhatsApp Image 2026-09-16 at 21.03.09 (6).jpeg",
+          "caption": "Wedding Reception"
+        }
+      ]
     }
   ]
 }
