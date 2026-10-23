@@ -1739,37 +1739,24 @@ document.addEventListener('DOMContentLoaded', function () {
 <!-- Public Website Visitor Counter -->
 <script>
 (function () {
-  var timer = setInterval(function () {
-    if (window.goatcounter && window.goatcounter.visit_count) {
-      clearInterval(timer);
+  const counter = document.getElementById('websiteViewCount');
 
-      window.goatcounter.visit_count({
-        append: '#websiteViewCount',
-        type: 'html',
-        path: 'TOTAL',
-        no_branding: true,
-        style: `
-          div {
-            border: none;
-            background: transparent;
-            color: #c9a24d;
-            font-family: inherit;
-            font-size: 14px;
-            padding: 0;
-            margin: 0;
-          }
-          #gcvc-for, #gcvc-by {
-            display: none;
-          }
-          #gcvc-views {
-            color: #c9a24d;
-            font-size: 14px;
-            font-weight: bold;
-          }
-        `
-      });
-    }
-  }, 100);
+  if (!counter) return;
+
+  fetch('https://watlingtonssc.goatcounter.com/counter/TOTAL.json')
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error('Unable to retrieve visitor count');
+      }
+      return response.json();
+    })
+    .then(function (data) {
+      counter.textContent = data.count;
+    })
+    .catch(function (error) {
+      console.error('Visitor counter error:', error);
+      counter.textContent = '';
+    });
 })();
 </script>
 
