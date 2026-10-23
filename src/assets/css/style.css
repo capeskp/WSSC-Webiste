@@ -1126,3 +1126,40 @@
     white-space: normal;
   }
 }
+/* ==========================================
+   WHAT'S ON — CONSISTENT EVENT POSTER LAYOUT
+   ========================================== */
+
+/* Keep upcoming event cards aligned */
+.event-card-grid {
+  align-items: stretch;
+}
+
+/* Standard poster display area */
+.event-card .event-poster-button {
+  height: 320px;
+  overflow: hidden;
+  background: var(--felt-deep);
+}
+
+/* Display posters without cropping */
+.event-card .event-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Keep event descriptions aligned */
+.event-card .event-card-info {
+  flex: 1;
+}
+
+/* Mobile adjustments */
+@media (max-width: 720px) {
+
+  .event-card .event-poster-button {
+    height: 360px;
+  }
+
+}
