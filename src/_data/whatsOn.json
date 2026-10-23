@@ -15,7 +15,7 @@
   ],
   "thisMonth": [
     {
-      "badge": "/assets/img/1-halloween-party-corrected.png",
+      "badge": "/assets/img/kids-halloween-party.png",
       "dateLabel": "30 Oct",
       "title": "Halloween Party",
       "eventDate": "2026-10-30",
@@ -24,9 +24,9 @@
       "description": "Fri 30th Oct, 6pm to 9pm. Fancy dress, games and music. Fun for all the family."
     },
     {
-      "badge": "/assets/img/2-football-club-disco-corrected.png",
+      "badge": "/assets/img/disco-bingo.png",
       "dateLabel": "14 Nov",
-      "title": "Football Club Disco",
+      "title": "Football Club Disco Binngo",
       "eventDate": "2026-11-14",
       "startTime": "19:30",
       "description": "Sat 14th Nov, from 7:30pm. Great music, good times. All welcome."
@@ -39,7 +39,7 @@
       "description": "Sat 5th Dec. Teams, trivia and great prizes. All welcome."
     },
     {
-      "badge": "/assets/img/4-kids-christmas-party-corrected.png",
+      "badge": "/assets/img/kids-xmass-party.png",
       "dateLabel": "12 Dec",
       "title": "Kids Christmas Party",
       "eventDate": "2026-12-12",
