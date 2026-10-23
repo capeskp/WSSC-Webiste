@@ -477,59 +477,40 @@
     <h2 class="section-title">Host your event</h2>
     <p style="margin-top:6px; color:var(--ink); opacity:.75;">{{ hostEvents.intro }}</p>
 
-    <div class="event-tabs" id="eventTabs">
-      <button class="event-tab" data-tab="babyShower" onclick="eventTab('babyShower', this)">Baby Shower</button>
-      <button class="event-tab" data-tab="genderReveal" onclick="eventTab('genderReveal', this)">Gender Reveal</button>
-      <button class="event-tab" data-tab="wedding" onclick="eventTab('wedding', this)">Wedding Reception</button>
+        <div class="event-tabs" id="eventTabs">
+      {% for event in hostEvents.events %}
+      <button
+        type="button"
+        class="event-tab"
+        data-tab="{{ loop.index0 }}"
+        onclick="eventTab('{{ loop.index0 }}', this)">
+        {{ event.name }}
+      </button>
+      {% endfor %}
     </div>
 
-    <div class="event-panel" id="panel-babyShower">
-      <div class="mem-slideshow" id="memSlideshow-babyShower">
+    {% for event in hostEvents.events %}
+    <div class="event-panel" id="panel-{{ loop.index0 }}">
+      <div class="mem-slideshow" id="memSlideshow-{{ loop.index0 }}">
         <div class="mem-frame">
           <img class="mem-img" src="" alt="">
-          <button class="mem-nav mem-prev" aria-label="Previous photo" onclick="memMove(-1)">&#10094;</button>
-          <button class="mem-nav mem-next" aria-label="Next photo" onclick="memMove(1)">&#10095;</button>
+          <button class="mem-nav mem-prev"
+                  aria-label="Previous photo"
+                  onclick="memMove(-1)">&#10094;</button>
+          <button class="mem-nav mem-next"
+                  aria-label="Next photo"
+                  onclick="memMove(1)">&#10095;</button>
         </div>
         <p class="mem-caption"></p>
         <div class="mem-dots"></div>
       </div>
-      <div class="event-empty" style="display:none;">
-        <h3 style="font-size:16px;">No photos yet</h3>
-        <p>Hosted a baby shower at the club? Send your photos over and we'll feature them here.</p>
-      </div>
-    </div>
 
-    <div class="event-panel" id="panel-genderReveal">
-      <div class="mem-slideshow" id="memSlideshow-genderReveal">
-        <div class="mem-frame">
-          <img class="mem-img" src="" alt="">
-          <button class="mem-nav mem-prev" aria-label="Previous photo" onclick="memMove(-1)">&#10094;</button>
-          <button class="mem-nav mem-next" aria-label="Next photo" onclick="memMove(1)">&#10095;</button>
-        </div>
-        <p class="mem-caption"></p>
-        <div class="mem-dots"></div>
-      </div>
       <div class="event-empty" style="display:none;">
         <h3 style="font-size:16px;">No photos yet</h3>
-        <p>Hosted a gender reveal at the club? Send your photos over and we'll feature them here.</p>
+        <p>Photographs from this event will be added soon.</p>
       </div>
     </div>
-
-    <div class="event-panel" id="panel-wedding">
-      <div class="mem-slideshow" id="memSlideshow-wedding">
-        <div class="mem-frame">
-          <img class="mem-img" src="" alt="">
-          <button class="mem-nav mem-prev" aria-label="Previous photo" onclick="memMove(-1)">&#10094;</button>
-          <button class="mem-nav mem-next" aria-label="Next photo" onclick="memMove(1)">&#10095;</button>
-        </div>
-        <p class="mem-caption"></p>
-        <div class="mem-dots"></div>
-      </div>
-      <div class="event-empty" style="display:none;">
-        <h3 style="font-size:16px;">No photos yet</h3>
-        <p>Hosted a wedding reception at the club? Send your photos over and we'll feature them here.</p>
-      </div>
-    </div>
+    {% endfor %}
   </div>
 </section>
 <!-- ==========================================
